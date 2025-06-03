@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce3ovso7snblc"]
+
+[ext_resource type="Script" uid="uid://kp5y0exxhxra" path="res://scripts/dantsune_miku.gd" id="1_sxhap"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_sxhap")
