@@ -14,6 +14,7 @@ resource_name = "walking"
 [sub_resource type="Animation" id="Animation_56ii2"]
 resource_name = "attack"
 length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,38 +30,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:attacking")
+tracks/1/path = NodePath("boxhit/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.270747),
+"times": PackedFloat32Array(0, 0.266667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/swordhit/CollisionShape2D:debug_color")
+tracks/2/path = NodePath(".:attacking")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.264451),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.523637, 0.53671, 0.55831, 0.42), Color(0.883642, 0.293895, 0.417855, 0.42)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/swordhit/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.266025, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false, true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_kfexg"]
@@ -80,38 +69,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:attacking")
+tracks/1/path = NodePath("boxhit/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/swordhit/CollisionShape2D:debug_color")
+tracks/2/path = NodePath(".:attacking")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.883642, 0.293895, 0.417855, 0.42)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/swordhit/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pfdxx"]
@@ -133,10 +110,13 @@ shape = SubResource("CapsuleShape2D_sxhap")
 [node name="boxhit" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boxhit"]
 position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_sxhap")
+disabled = true
 debug_color = Color(0.190258, 0.573693, 0.780819, 0.42)
 
 [node name="Sword_Jump_Timer" type="Timer" parent="boxhit"]
@@ -144,7 +124,6 @@ wait_time = 0.128
 one_shot = true
 
 [node name="ColorRect" type="ColorRect" parent="boxhit"]
-visible = false
 offset_left = -2.0
 offset_top = -1.0
 offset_right = 2.0
@@ -172,7 +151,5 @@ position = Vector2(6, 20)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/swordhit"]
 position = Vector2(22, -5)
 shape = SubResource("RectangleShape2D_cigwe")
-disabled = true
-debug_color = Color(0.883642, 0.293895, 0.417855, 0.42)
 
 [connection signal="area_entered" from="Sprite2D/swordhit" to="." method="_on_swordhit_area_entered"]

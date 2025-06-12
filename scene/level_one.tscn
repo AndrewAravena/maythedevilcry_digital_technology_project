@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cu8log8udt0jh"]
+[gd_scene load_steps=5 format=3 uid="uid://cu8log8udt0jh"]
 
 [ext_resource type="PackedScene" uid="uid://8injipo77lnl" path="res://scene/placeholder.tscn" id="1_ba3bs"]
 [ext_resource type="PackedScene" uid="uid://dlawxjcvcqoua" path="res://scene/testplatform.tscn" id="2_swhd1"]
 [ext_resource type="PackedScene" uid="uid://ce3ovso7snblc" path="res://scene/dantsune_Miku.tscn" id="3_kd301"]
+[ext_resource type="PackedScene" uid="uid://cpu76c680vtxu" path="res://scene/enemy.tscn" id="4_swhd1"]
 
 [node name="Node2D" instance=ExtResource("1_ba3bs")]
 
@@ -13,4 +14,15 @@ position = Vector2(16, 231)
 position = Vector2(116, 137)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" index="2"]
-zoom = Vector2(1.35, 1.35)
+zoom = Vector2(1.96, 1.96)
+
+[node name="CharacterBody2D2" parent="." index="2" instance=ExtResource("4_swhd1")]
+position = Vector2(376, 15)
+
+[node name="StaticBody2D2" parent="." index="3" instance=ExtResource("2_swhd1")]
+position = Vector2(-1216, 10)
+rotation = -1.57003
+
+[node name="StaticBody2D2" parent="StaticBody2D2" index="2" instance=ExtResource("2_swhd1")]
+position = Vector2(-77.5415, 3218.06)
+rotation = -0.00426447

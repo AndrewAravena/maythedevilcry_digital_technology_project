@@ -2,7 +2,7 @@
 extends CharacterBody2D
 
 
-@onready var _animated_sprite = $AnimatedSprite2D
+@onready var _animated_sprite = $AnimationPlayer
 @onready var sword_jump = $boxhit
 @onready var sword_jump_timer: Timer = $boxhit/Sword_Jump_Timer
 
@@ -12,7 +12,7 @@ extends CharacterBody2D
 @export var gravity = 500.0
 @export_range(0.0, 1.0) var friction = 0.8
 @export_range(0.0 , 1.0) var acceleration = 0.4
-@export var sword_jump_strongy = 100
+@export var sword_jump_strongy = 50
 
 @export_category("Jump variable")
 @export var JUMP_VELOCITY = -400.0
@@ -22,12 +22,21 @@ var is_dashing = false
 @export var jump_ammount = 2
 @export var accel = 290.0
 
+@export  var attacking = false 
+
 
 func _physics_process(delta):
 	if not is_on_floor() and not is_dashing:
 		velocity.y += gravity * delta
 	jump_logic()
 	
+	if Input.is_action_just_pressed("attack"):
+		attack()
+		
+			
+				
+		
+		
 		
 	var dir = Input.get_axis("left", "right")
 	if dir != 0:
@@ -55,7 +64,13 @@ func _physics_process(delta):
 		
 		
 
-
+func attack():
+	attacking = true 
+	_animated_sprite.play("attack")
+	await _animated_sprite.animation_finished
+	_animated_sprite.stop()
+	
+	
 
 func _on_touchy_touch_death(body):
 	if body.has_meta("death"):
@@ -92,3 +107,9 @@ func sword_jump_logic():
 			var bodies = sword_jump.get_overlapping_bodies()
 			if len(bodies)>0:
 				velocity.y-= sword_jump_strongy
+
+
+func _on_swordhit_area_entered(area: Area2D) -> void:
+	if area.is_in_group("hitbox"):
+		area.take_damage
+		
