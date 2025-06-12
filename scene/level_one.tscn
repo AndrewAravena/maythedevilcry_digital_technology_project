@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfp6tlh67oloh"]
+
+[ext_resource type="PackedScene" uid="uid://cyacd6j5t1c2m" path="res://scene/Floor.tscn" id="1_sdp7n"]
+[ext_resource type="PackedScene" uid="uid://ce3ovso7snblc" path="res://scene/dantsune_Miku.tscn" id="2_ba3bs"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_ba3bs")]
+position = Vector2(20, 84)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(3.335, 3.335)
+
+[node name="Area2D" parent="." instance=ExtResource("1_sdp7n")]
+position = Vector2(-23, 333)

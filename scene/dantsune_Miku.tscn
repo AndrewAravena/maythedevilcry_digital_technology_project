@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://ce3ovso7snblc"]
+[gd_scene load_steps=4 format=3 uid="uid://ce3ovso7snblc"]
 
-[ext_resource type="Script" uid="uid://kp5y0exxhxra" path="res://scripts/dantsune_miku.gd" id="1_sxhap"]
+[ext_resource type="Script" uid="uid://dbrnys6e0rem3" path="res://scripts/dantsune.gd" id="1_1yadk"]
+[ext_resource type="Texture2D" uid="uid://k3e7tk07xrm0" path="res://assets/dantsunemiku.png" id="2_8vg5b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_56ii2"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-script = ExtResource("1_sxhap")
+script = ExtResource("1_1yadk")
+
+[node name="Dantsunemiku" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("2_8vg5b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_56ii2")
