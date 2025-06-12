@@ -1,6 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://ce3ovso7snblc"]
+[gd_scene load_steps=4 format=3 uid="uid://ce3ovso7snblc"]
 
 [ext_resource type="Script" uid="uid://kp5y0exxhxra" path="res://scripts/dantsune_miku.gd" id="1_sxhap"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sxhap"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxhap"]
+size = Vector2(3.5, 28)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_sxhap")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_sxhap")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -11.0
+offset_top = -15.0
+offset_right = 12.0
+offset_bottom = 15.0
+
+[node name="boxhit" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boxhit"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_sxhap")
+
+[node name="Sword_Jump_Timer" type="Timer" parent="boxhit"]
+wait_time = 0.128
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="boxhit"]
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 2.0
+offset_bottom = 27.0
+color = Color(1, 0.239216, 1, 1)
+
+[node name="dashTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
