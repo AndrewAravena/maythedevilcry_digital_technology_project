@@ -22,7 +22,7 @@ var is_dashing = false
 @export var jump_ammount = 2
 @export var accel = 290.0
 
-@export  var attacking = false 
+var attacking = false 
 var attack_weapon = "String"
 var current_equipped: String 
 var weapon_select = ["sword", "gun", "scythe"]
@@ -142,5 +142,4 @@ func weapon_equipped():
 		else:
 			current_equipped_int -= 1
 	current_equipped = weapon_select[current_equipped_int]
-	print(current_equipped_int)
-	print(current_equipped)
+	
