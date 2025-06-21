@@ -46,10 +46,28 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, dir * speed, acceleration)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, friction)
+	
+	if velocity.y < 0: 
+		#_animated_sprite.play("jump")
+		pass
+	#if velocity.x :
+		#$Node2D.scale.x = -1 if velocity.x < 0 else 1
+	if Input.is_action_pressed("left"):
+		$Node2D.scale.x = -1
+		
+	if Input.is_action_pressed("right"):
+		$Node2D.scale.x = 1
+		
+	
+	
+
+	
+		
+	
+	
 	if attacking == false:
 		if Input.is_action_just_pressed("attack") :
 			pass
-
 
 	if Input.is_action_just_pressed("dash")and dash_ready == true :
 		dash_ready = false
