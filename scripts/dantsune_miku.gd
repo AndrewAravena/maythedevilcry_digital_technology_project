@@ -1,5 +1,5 @@
-
 extends CharacterBody2D
+
 
 
 @onready var _animated_sprite = $AnimationPlayer
@@ -46,24 +46,12 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, dir * speed, acceleration)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, friction)
-	
-	if velocity.y < 0: 
-		#_animated_sprite.play("jump")
-		pass
-	#if velocity.x :
-		#$Node2D.scale.x = -1 if velocity.x < 0 else 1
+
 	if Input.is_action_pressed("left"):
 		$Node2D.scale.x = -1
 		
 	if Input.is_action_pressed("right"):
 		$Node2D.scale.x = 1
-		
-	
-	
-
-	
-		
-	
 	
 	if attacking == false:
 		if Input.is_action_just_pressed("attack") :
@@ -80,14 +68,11 @@ func _physics_process(delta):
 		velocity.x += 100 *dir
 		if $dashTimer.is_stopped():
 			is_dashing = false
-	if attacking == false:
-		sword_jump_logic()	
-		
+	
+	sword_jump_logic()
 	move_and_slide()
 	
 	weapon_equipped()
-
-
 
 func _animation_play():
 	if attacking == true:
@@ -100,6 +85,7 @@ func attack():
 	_animated_sprite.play("sword")
 	await _animated_sprite.animation_finished
 	_animated_sprite.stop()
+	
 
 func _on_touchy_touch_death(body):
 	if body.has_meta("death"):
@@ -161,3 +147,13 @@ func weapon_equipped():
 			current_equipped_int -= 1
 	current_equipped = weapon_select[current_equipped_int]
 	
+
+
+func weapon_body_entered(body: Node2D) -> void:
+	if attacking :
+		if body is Enemy:
+			body.take_damage()
+			print("he toucha ma spheggeti")
+			
+			
+			

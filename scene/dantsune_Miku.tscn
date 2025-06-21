@@ -207,7 +207,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Area2D/CollisionShape2D:rotation")
+tracks/16/path = NodePath("Node2D/Rippler/Area2D/CollisionShape2D:rotation")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -219,7 +219,7 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Area2D/CollisionShape2D:position")
+tracks/17/path = NodePath("Node2D/Rippler/Area2D/CollisionShape2D:position")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -361,7 +361,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Area2D/CollisionShape2D:rotation")
+tracks/6/path = NodePath("Node2D/Rippler/Area2D/CollisionShape2D:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -373,7 +373,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Area2D/CollisionShape2D:position")
+tracks/7/path = NodePath("Node2D/Rippler/Area2D/CollisionShape2D:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -381,6 +381,58 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-31.8957, -7.79209), Vector2(-26, -14), Vector2(-19, -22), Vector2(-13, -22), Vector2(-7, -21), Vector2(9, -18), Vector2(16, -11), Vector2(17, -4), Vector2(22, 3), Vector2(20.9612, 3.91037), Vector2(18.6649, 5.92281), Vector2(19, 8), Vector2(20, 8), Vector2(17, 10), Vector2(18, 8.49998), Vector2(18.5, 7.74997), Vector2(19, 7), Vector2(16, -1), Vector2(8, -18), Vector2(-25, -14), Vector2(-26.7257, -12.4464), Vector2(-30.177, -9.33935)]
+}
+
+[sub_resource type="Animation" id="Animation_gv3ht"]
+resource_name = "scythe_second"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Rippler:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.5, 0.65, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-17, -6), Vector2(-17, -6), Vector2(-17, -18.25), Vector2(-17, -6), Vector2(-17, -57), Vector2(-17, -57)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Rippler:flip_v")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Rippler:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-3, 5), Vector2(-2, 4), Vector2(-1, 3), Vector2(-1, 3), Vector2(1, -3), Vector2(-3, 8), Vector2(-3, 8), Vector2(-3, 8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Rippler:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-1.1266, -1.83244, -2.50608, -3.72156, -4.54302, -1.89956, -1.68991, -0.0816344]
 }
 
 [sub_resource type="Animation" id="Animation_56ii2"]
@@ -636,58 +688,6 @@ tracks/5/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_gv3ht"]
-resource_name = "scythe_second"
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Rippler:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.25, 0.5, 0.65, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-17, -6), Vector2(-17, -6), Vector2(-17, -18.25), Vector2(-17, -6), Vector2(-17, -57), Vector2(-17, -57)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/Rippler:flip_v")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.35, 0.65),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/Rippler:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-3, 5), Vector2(-2, 4), Vector2(-1, 3), Vector2(-1, 3), Vector2(1, -3), Vector2(-3, 8), Vector2(-3, 8), Vector2(-3, 8)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/Rippler:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.25, 0.35, 0.5, 0.65, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [-1.1266, -1.83244, -2.50608, -3.72156, -4.54302, -1.89956, -1.68991, -0.0816344]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pfdxx"]
 _data = {
 &"RESET": SubResource("Animation_kfexg"),
@@ -766,6 +766,7 @@ texture = ExtResource("2_1yadk")
 hframes = 7
 
 [node name="Rippler" type="Sprite2D" parent="Node2D"]
+visible = false
 position = Vector2(-14, -8)
 rotation = -1.41261
 scale = Vector2(0.71875, 0.625)
@@ -773,11 +774,17 @@ texture = ExtResource("5_kfexg")
 centered = false
 offset = Vector2(-17, -55)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="Node2D/Rippler"]
+position = Vector2(5.06763, -12.366)
+rotation = 0.0938125
+scale = Vector2(1.3928, 1.5987)
+skew = -0.0227877
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Rippler/Area2D"]
 position = Vector2(-31.8957, -7.79209)
 rotation = 1.83497
 shape = SubResource("RectangleShape2D_kfexg")
 
 [connection signal="area_entered" from="Node2D/Sprite2D/swordhit" to="." method="_on_swordhit_area_entered"]
+[connection signal="body_entered" from="Node2D/Sprite2D/swordhit" to="." method="weapon_body_entered"]
+[connection signal="body_entered" from="Node2D/Rippler/Area2D" to="." method="weapon_body_entered"]
