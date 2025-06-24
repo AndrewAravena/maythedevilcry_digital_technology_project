@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+class_name player_class
 
 @onready var _animated_sprite = $AnimationPlayer
 @onready var sword_jump = $boxhit
