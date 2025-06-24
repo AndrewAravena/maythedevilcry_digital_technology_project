@@ -6,6 +6,7 @@ var can_track = true
 var player: Node
 
 func _ready() -> void:
+	$queueFreeTimer.start()
 	player = get_tree().get_first_node_in_group("player")
 
 	pass
@@ -35,3 +36,7 @@ func _on_body_entered(body: Node2D) -> void:
 		print("hit")
 	# elif body.has_meta("floor"):
 		# queue_free()
+
+
+func _on_queue_free_timer_timeout() -> void:
+	queue_free()

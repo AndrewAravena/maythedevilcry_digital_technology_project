@@ -40,5 +40,13 @@ shape = SubResource("RectangleShape2D_rh4d4")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
+[node name="tpBackTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="readyToTpTimer" type="Timer" parent="."]
+wait_time = 9.5
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="tpBackTimer" to="." method="_on_tp_back_timer_timeout"]
+[connection signal="timeout" from="readyToTpTimer" to="." method="_on_ready_to_tp_timer_timeout"]
