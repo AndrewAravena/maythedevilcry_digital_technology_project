@@ -1,23 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpu76c680vtxu"]
+[gd_scene load_steps=4 format=3 uid="uid://cpu76c680vtxu"]
 
 [ext_resource type="Script" uid="uid://h0clgctcid8u" path="res://scripts/character_body_2d.gd" id="1_h08p8"]
+[ext_resource type="Texture2D" uid="uid://dxxdh0a7hlcm7" path="res://assets/Personajes.png" id="2_f87vc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f87vc"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_f87vc"]
+radius = 12.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_h08p8")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -11.0
-offset_top = -11.0
-offset_right = 11.0
-offset_bottom = 11.0
-color = Color(1, 0.168627, 1, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_f87vc")
 
 [node name="direction timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Personajes" type="Sprite2D" parent="."]
+position = Vector2(1, 2)
+scale = Vector2(0.109375, 0.0833334)
+texture = ExtResource("2_f87vc")
+hframes = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(4.76837e-07, 1.19209e-07)
+scale = Vector2(1.25576, 1.25426)
+polygon = PackedVector2Array(-9.55597, 9.5674, 15.1303, 9.5674, 18.3156, 7.17555, 15.9266, -3.18913, 2.38899, -8.77011, -11.1486, -6.37826, -15.1303, 0.797283, -16, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f87vc")
 
 [connection signal="timeout" from="direction timer" to="." method="_on_direction_timer_timeout"]
