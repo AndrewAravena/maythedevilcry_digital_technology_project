@@ -30,11 +30,14 @@ var current_equipped_int: int = 0
 var min_wepons: int = 0
 var max_wepons: int = 2
 
+var horns: int = 5
+
 func _physics_process(delta):
 	
 	if not is_on_floor() and not is_dashing:
 		velocity.y += gravity * delta
 	jump_logic()
+	
 	
 	if Input.is_action_just_pressed("attack"):
 		attack()
@@ -153,7 +156,21 @@ func weapon_body_entered(body: Node2D) -> void:
 	if attacking :
 		if body is Enemy:
 			body.take_damage()
+			
+			
+			
+			
+
+
+func take_damage(body: Node2D) -> void:
+	if body is Enemy:
+		horns -= body.damage_to_deal
+		if horns <= 0:
 			print("he toucha ma spheggeti")
-			
-			
-			
+
+			get_tree().reload_current_scene()
+			queue_free()
+
+
+func _on_h_box_container_sort_children() -> void:
+	pass # Replace with function body.

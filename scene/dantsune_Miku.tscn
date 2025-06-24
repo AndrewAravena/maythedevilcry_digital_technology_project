@@ -1,14 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://ce3ovso7snblc"]
+[gd_scene load_steps=18 format=3 uid="uid://ce3ovso7snblc"]
 
 [ext_resource type="Script" uid="uid://kp5y0exxhxra" path="res://scripts/dantsune_miku.gd" id="1_sxhap"]
 [ext_resource type="Texture2D" uid="uid://yi2nixjhutmh" path="res://assets/Sprites/ATTACK 1.png" id="2_1yadk"]
 [ext_resource type="Texture2D" uid="uid://bpikr6fjq2eqr" path="res://assets/walking-sprite-drink.png" id="3_8vg5b"]
 [ext_resource type="Texture2D" uid="uid://k3e7tk07xrm0" path="res://assets/dantsunemiku.png" id="4_56ii2"]
 [ext_resource type="Texture2D" uid="uid://uioqo0mwpadq" path="res://assets/Rippler.png" id="5_kfexg"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sxhap"]
-radius = 7.0
-height = 32.0
 
 [sub_resource type="Animation" id="Animation_kfexg"]
 length = 0.001
@@ -703,11 +699,16 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfexg"]
 size = Vector2(49.8151, 30.6301)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
-script = ExtResource("1_sxhap")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kfexg"]
+radius = 6.0
+height = 32.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_sxhap")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sxhap"]
+radius = 7.0
+height = 32.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_sxhap")
 
 [node name="boxhit" type="Area2D" parent="."]
 visible = false
@@ -785,6 +786,20 @@ position = Vector2(-31.8957, -7.79209)
 rotation = 1.83497
 shape = SubResource("RectangleShape2D_kfexg")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kfexg")
+
+[node name="player_hitbox" type="Area2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+
+[node name="player_hitbox" type="CollisionShape2D" parent="player_hitbox"]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("CapsuleShape2D_sxhap")
+debug_color = Color(0.979246, 0, 0.389617, 0.42)
+
 [connection signal="area_entered" from="Node2D/Sprite2D/swordhit" to="." method="_on_swordhit_area_entered"]
 [connection signal="body_entered" from="Node2D/Sprite2D/swordhit" to="." method="weapon_body_entered"]
 [connection signal="body_entered" from="Node2D/Rippler/Area2D" to="." method="weapon_body_entered"]
+[connection signal="body_entered" from="player_hitbox" to="." method="take_damage"]

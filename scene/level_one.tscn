@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu8log8udt0jh"]
+[gd_scene load_steps=7 format=3 uid="uid://cu8log8udt0jh"]
 
 [ext_resource type="PackedScene" uid="uid://8injipo77lnl" path="res://scene/placeholder.tscn" id="1_ba3bs"]
 [ext_resource type="PackedScene" uid="uid://dlawxjcvcqoua" path="res://scene/testplatform.tscn" id="2_swhd1"]
 [ext_resource type="PackedScene" uid="uid://ce3ovso7snblc" path="res://scene/dantsune_Miku.tscn" id="3_kd301"]
 [ext_resource type="PackedScene" uid="uid://cpu76c680vtxu" path="res://scene/enemy.tscn" id="4_swhd1"]
 [ext_resource type="Texture2D" uid="uid://bdijls82db5t" path="res://assets/889b86dfb255824f611c12f367f69cb6.jpg" id="5_kd301"]
+[ext_resource type="Texture2D" uid="uid://bq0hbbja5bpgs" path="res://assets/hp_place_holder.webp" id="6_28fid"]
 
 [node name="Node2D" instance=ExtResource("1_ba3bs")]
 
@@ -31,6 +32,40 @@ rotation = -0.00426447
 
 [node name="889b86Dfb255824f611c12f367f69Cb6" type="Sprite2D" parent="." index="4"]
 z_index = -1
-position = Vector2(492, 233)
-scale = Vector2(4.04348, 4.30676)
+position = Vector2(409.75, 111)
+scale = Vector2(4.32948, 4.30676)
 texture = ExtResource("5_kd301")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" index="0"]
+offset_right = 96.0
+offset_bottom = 18.0
+scale = Vector2(2.52138, 2.4313)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer" index="0"]
+layout_mode = 2
+texture = ExtResource("6_28fid")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/HBoxContainer" index="1"]
+layout_mode = 2
+texture = ExtResource("6_28fid")
+expand_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/HBoxContainer" index="2"]
+layout_mode = 2
+texture = ExtResource("6_28fid")
+expand_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/HBoxContainer" index="3"]
+layout_mode = 2
+texture = ExtResource("6_28fid")
+expand_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/HBoxContainer" index="4"]
+layout_mode = 2
+texture = ExtResource("6_28fid")
+expand_mode = 3
+
+[connection signal="sort_children" from="CanvasLayer/HBoxContainer" to="CharacterBody2D" method="_on_h_box_container_sort_children"]
