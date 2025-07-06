@@ -433,7 +433,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_56ii2"]
 resource_name = "sword"
-length = 0.8
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -441,10 +441,10 @@ tracks/0/path = NodePath("Node2D/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.233333, 0.266667, 0.366667, 0.466667, 0.566667, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [1, 2, 3, 4, 5, 6, 6, 6]
+"values": [1, 2, 4, 5, 6, 6]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -453,7 +453,7 @@ tracks/1/path = NodePath(".:attacking")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.270747),
+"times": PackedFloat32Array(0, 0.0666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -525,7 +525,7 @@ tracks/7/path = NodePath("Node2D/Sprite2D/swordhit/CollisionPolygon2D:disabled")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.288591, 0.485795),
+"times": PackedFloat32Array(0, 0.0666667, 0.166667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -798,6 +798,12 @@ light_mask = 4
 visibility_layer = 4
 shape = SubResource("CapsuleShape2D_sxhap")
 debug_color = Color(0.979246, 0, 0.389617, 0.42)
+
+[node name="attack_light" type="Timer" parent="."]
+
+[node name="attack_heavy" type="Timer" parent="."]
+
+[node name="attack_long_range" type="Timer" parent="."]
 
 [connection signal="area_entered" from="Node2D/Sprite2D/swordhit" to="." method="_on_swordhit_area_entered"]
 [connection signal="body_entered" from="Node2D/Sprite2D/swordhit" to="." method="weapon_body_entered"]

@@ -5,7 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://ce3ovso7snblc" path="res://scene/dantsune_Miku.tscn" id="3_kd301"]
 [ext_resource type="PackedScene" uid="uid://cpu76c680vtxu" path="res://scene/enemy.tscn" id="4_swhd1"]
 [ext_resource type="Texture2D" uid="uid://bdijls82db5t" path="res://assets/889b86dfb255824f611c12f367f69cb6.jpg" id="5_kd301"]
-[ext_resource type="Texture2D" uid="uid://bq0hbbja5bpgs" path="res://assets/hp_place_holder.webp" id="6_28fid"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_kd301"]
+frames = 5
+frame_1/duration = 1.0
+frame_2/duration = 1.0
+frame_3/duration = 1.0
+frame_4/duration = 1.0
 
 [node name="Node2D" instance=ExtResource("1_ba3bs")]
 
@@ -45,27 +51,16 @@ scale = Vector2(2.52138, 2.4313)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer" index="0"]
 layout_mode = 2
-texture = ExtResource("6_28fid")
+texture = SubResource("AnimatedTexture_kd301")
 expand_mode = 3
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/HBoxContainer" index="1"]
-layout_mode = 2
-texture = ExtResource("6_28fid")
-expand_mode = 3
+[node name="CharacterBody2D3" parent="." index="6" instance=ExtResource("4_swhd1")]
+position = Vector2(390, 209)
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/HBoxContainer" index="2"]
-layout_mode = 2
-texture = ExtResource("6_28fid")
-expand_mode = 3
+[node name="CharacterBody2D4" parent="." index="7" instance=ExtResource("4_swhd1")]
+position = Vector2(240, 208)
 
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/HBoxContainer" index="3"]
-layout_mode = 2
-texture = ExtResource("6_28fid")
-expand_mode = 3
-
-[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/HBoxContainer" index="4"]
-layout_mode = 2
-texture = ExtResource("6_28fid")
-expand_mode = 3
+[node name="CharacterBody2D5" parent="." index="8" instance=ExtResource("4_swhd1")]
+position = Vector2(337, 208)
 
 [connection signal="sort_children" from="CanvasLayer/HBoxContainer" to="CharacterBody2D" method="_on_h_box_container_sort_children"]

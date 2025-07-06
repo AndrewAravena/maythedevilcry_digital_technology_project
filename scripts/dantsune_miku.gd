@@ -166,7 +166,7 @@ func take_damage(body: Node2D) -> void:
 	if body is Enemy:
 		horns -= body.damage_to_deal
 		if horns <= 0:
-			print("he toucha ma spheggeti")
+			
 
 			get_tree().reload_current_scene()
 			queue_free()
