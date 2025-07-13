@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo48xqlxnie7w"]
+
+[ext_resource type="Script" uid="uid://dt8yqmui6ximk" path="res://scripts/delay_homing_bullet.gd" id="1_5arq2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfnu4"]
+size = Vector2(50, 20)
+
+[node name="delay homing bullet" type="Area2D"]
+script = ExtResource("1_5arq2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -25.0
+offset_top = -10.0
+offset_right = 25.0
+offset_bottom = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sfnu4")

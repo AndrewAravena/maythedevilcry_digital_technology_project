@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var homing_bullet_scene : PackedScene
 @export var homing_bullet_spawn : Node
 @export var homing_bullet_rotation : Node
+@export var base_slash_scene : PackedScene
+@export var delay_homing_bullet_scene : PackedScene
 var player : Node
 var can_shoot_homing_bullet = true
 var homing_bullets_shot = 1
@@ -26,7 +28,7 @@ func _process(delta: float) -> void:
 	if homing_bullets_shot <= 3 and can_shoot_homing_bullets_again == true:
 		_attack_one()
 		$readyToTpTimer.start()
-
+	_attack_two()
 	# elif homing_bullets_shot == 3 and can_shoot_homing_bullets_again == false:
 		# change timer here to increase time between each burst of shots
 		# $Timer2.start()
@@ -44,17 +46,21 @@ func _attack_one(): # homing bullet triple shot
 		$Timer.start()
 		homing_bullets_shot += 1
 
-func _attack_twp(): # tp slash atk
+func _attack_two(): # tp slash atk
 	var player_pos = player.global_position
 	if ready_to_tp == true:
 		_tp(player_pos)
-		
+		var base_slash = base_slash_scene.instantiate()
+		base_slash.global_position = $Marker2D2.global_position
+		add_sibling(base_slash)
+		print("worked")
 
 func _tp(player_pos):
 	self.global_position = player_pos + Vector2(50, 0)
 	$tpBackTimer.start()
 	ready_to_tp = false
 	
+
 
 func _on_timer_timeout() -> void:
 	can_shoot_homing_bullet = true
