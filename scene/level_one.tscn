@@ -5,13 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ce3ovso7snblc" path="res://scene/dantsune_Miku.tscn" id="3_kd301"]
 [ext_resource type="PackedScene" uid="uid://cpu76c680vtxu" path="res://scene/enemy.tscn" id="4_swhd1"]
 [ext_resource type="Texture2D" uid="uid://bdijls82db5t" path="res://assets/889b86dfb255824f611c12f367f69cb6.jpg" id="5_kd301"]
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_kd301"]
-frames = 5
-frame_1/duration = 1.0
-frame_2/duration = 1.0
-frame_3/duration = 1.0
-frame_4/duration = 1.0
+[ext_resource type="PackedScene" uid="uid://mvcakvvr8m1a" path="res://scene/Horns_Hp.tscn" id="6_28fid"]
 
 [node name="Node2D" instance=ExtResource("1_ba3bs")]
 
@@ -20,6 +14,7 @@ position = Vector2(16, 231)
 
 [node name="CharacterBody2D" parent="." index="1" instance=ExtResource("3_kd301")]
 position = Vector2(116, 137)
+horns_hp_bar_path = NodePath("../CanvasLayer/CanvasLayer2")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" index="2"]
 zoom = Vector2(2, 2)
@@ -38,29 +33,19 @@ rotation = -0.00426447
 
 [node name="889b86Dfb255824f611c12f367f69Cb6" type="Sprite2D" parent="." index="4"]
 z_index = -1
-position = Vector2(409.75, 111)
+position = Vector2(410, 113)
 scale = Vector2(4.32948, 4.30676)
 texture = ExtResource("5_kd301")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" index="0"]
-offset_right = 96.0
-offset_bottom = 18.0
-scale = Vector2(2.52138, 2.4313)
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer" index="0"]
-layout_mode = 2
-texture = SubResource("AnimatedTexture_kd301")
-expand_mode = 3
-
-[node name="CharacterBody2D3" parent="." index="6" instance=ExtResource("4_swhd1")]
+[node name="CharacterBody2D3" parent="." index="5" instance=ExtResource("4_swhd1")]
 position = Vector2(390, 209)
 
-[node name="CharacterBody2D4" parent="." index="7" instance=ExtResource("4_swhd1")]
+[node name="CharacterBody2D4" parent="." index="6" instance=ExtResource("4_swhd1")]
 position = Vector2(240, 208)
 
-[node name="CharacterBody2D5" parent="." index="8" instance=ExtResource("4_swhd1")]
+[node name="CharacterBody2D5" parent="." index="7" instance=ExtResource("4_swhd1")]
 position = Vector2(337, 208)
 
-[connection signal="sort_children" from="CanvasLayer/HBoxContainer" to="CharacterBody2D" method="_on_h_box_container_sort_children"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="8"]
+
+[node name="CanvasLayer2" parent="CanvasLayer" index="0" instance=ExtResource("6_28fid")]
