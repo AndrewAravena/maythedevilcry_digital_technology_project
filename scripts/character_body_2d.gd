@@ -26,6 +26,8 @@ func _process(delta: float) -> void:
 		velocity.x = 0
 	move(delta)
 	
+	print(health)
+	
 	move_and_slide()
 func move(delta):
 	if !dead: 

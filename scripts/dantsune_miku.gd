@@ -37,7 +37,8 @@ var horns: int = 5
 
 
 
-
+func _ready() -> void:
+	pass
 
 func _physics_process(delta):
 	
@@ -187,9 +188,15 @@ func take_damage(body: Node2D) -> void:
 		horns -= body.damage_to_deal
 		horns = max(horns, 0)
 		update_hp_bar()
-		if horns <= 0:
-			get_tree().reload_current_scene()
-			queue_free()
+	if horns <= 0:
+		get_tree().reload_current_scene()
+		queue_free()
+			
+	if body is not Enemy and collision_layer == 3 :
+		horns -= 1
+		horns = max(horns, 0 )
+		update_hp_bar()
+	
 func update_hp_bar():
 	horns_hp_bar.set_hp(horns)
 
