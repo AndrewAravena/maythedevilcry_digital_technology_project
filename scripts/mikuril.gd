@@ -83,7 +83,7 @@ func _attack_three():
 func _attack_four():
 	if can_attack_3 == true:
 		var fast_bullet = fast_bullet_scene.instantiate()
-		fast_bullet.rotation = (player.global_position - fast_bullet.global_position).normalized()
+		fast_bullet.direction = (player.global_position - fast_bullet.global_position).normalized()
 		for i in 20:
 			add_sibling(fast_bullet)
 
