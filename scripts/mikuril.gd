@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var homing_bullet_rotation : Node
 @export var base_slash_scene : PackedScene
 @export var delay_homing_bullet_scene : PackedScene
+@export var fast_bullet_scene: PackedScene
 var player : Node
 var can_shoot_homing_bullet = true
 var can_shoot_delay_bullet = false
@@ -15,6 +16,7 @@ var delay_bullets_shot = 1
 var can_shoot_homing_bullets_again = true
 var can_shoot_delay_again = true
 var ready_to_tp = false
+var can_attack_3 = false
 @onready var old_pos = self.global_position
 
 
@@ -36,7 +38,8 @@ func _process(delta: float) -> void:
 	_attack_two()
 	if delay_bullets_shot <= 3 and can_shoot_delay_again == true:
 		_attack_three()
-	# elif homing_bullets_shot == 3 and can_shoot_homing_bullets_again == false:
+	_attack_four()
+			# elif homing_bullets_shot == 3 and can_shoot_homing_bullets_again == false:
 		# change timer here to increase time between each burst of shots
 		# $Timer2.start()
 		# homing_bullets_shot = 5
@@ -77,6 +80,13 @@ func _attack_three():
 		delay_bullets_shot += 1
 		print("worked")
 
+func _attack_four():
+	if can_attack_3 == true:
+		var fast_bullet = fast_bullet_scene.instantiate()
+		fast_bullet.rotation = (player.global_position - fast_bullet.global_position).normalized()
+		for i in 20:
+			add_sibling(fast_bullet)
+
 func _on_timer_timeout() -> void:
 	can_shoot_homing_bullet = true
 
@@ -100,3 +110,7 @@ func _on_delay_homing_timer_timeout() -> void:
 
 func _on_timer_3_timeout() -> void:
 	can_shoot_delay_again = true
+
+
+func _on_atk_3_timeout() -> void:
+	can_attack_3 = true

@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://n06lmv4u3igo"]
+[gd_scene load_steps=8 format=3 uid="uid://n06lmv4u3igo"]
 
 [ext_resource type="Script" uid="uid://25xx5llh2wi1" path="res://scripts/mikuril.gd" id="1_pm1pp"]
 [ext_resource type="PackedScene" uid="uid://dt7w4rih1wu4v" path="res://scene/homing-enemy-bullet.tscn" id="2_whdv4"]
+[ext_resource type="PackedScene" uid="uid://b63rh35tmfmf8" path="res://scene/base_slash.tscn" id="3_emj4e"]
+[ext_resource type="PackedScene" uid="uid://bo48xqlxnie7w" path="res://scene/delay_homing_bullet.tscn" id="4_ddw5g"]
+[ext_resource type="PackedScene" uid="uid://bbqjpjdqbudsk" path="res://scene/fast-bullet.tscn" id="5_ddw5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whdv4"]
 size = Vector2(40, 40)
@@ -14,6 +17,9 @@ script = ExtResource("1_pm1pp")
 homing_bullet_scene = ExtResource("2_whdv4")
 homing_bullet_spawn = NodePath("Node2D")
 homing_bullet_rotation = NodePath("Marker2D")
+base_slash_scene = ExtResource("3_emj4e")
+delay_homing_bullet_scene = ExtResource("4_ddw5g")
+fast_bullet_scene = ExtResource("5_ddw5g")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -20.0
@@ -54,9 +60,13 @@ wait_time = 17.0
 
 [node name="Timer3" type="Timer" parent="."]
 
+[node name="atk3" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="timeout" from="tpBackTimer" to="." method="_on_tp_back_timer_timeout"]
 [connection signal="timeout" from="readyToTpTimer" to="." method="_on_ready_to_tp_timer_timeout"]
 [connection signal="timeout" from="delayHomingTimer" to="." method="_on_delay_homing_timer_timeout"]
 [connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]
+[connection signal="timeout" from="atk3" to="." method="_on_atk_3_timeout"]

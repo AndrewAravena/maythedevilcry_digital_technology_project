@@ -19,9 +19,6 @@ func _process(delta: float) -> void:
 			
 			can_track = false 
 			$Timer.start()
-		elif can_track == false:
-			direction = ($Marker2D.global_position - global_position).normalized()
-			rotation = direction.angle()
 		position += direction * speed * delta
 	else:
 		print("did not find player")
