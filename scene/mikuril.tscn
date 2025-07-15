@@ -50,8 +50,13 @@ wait_time = 9.5
 position = Vector2(-73, 0)
 
 [node name="delayHomingTimer" type="Timer" parent="."]
+wait_time = 17.0
+
+[node name="Timer3" type="Timer" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="timeout" from="tpBackTimer" to="." method="_on_tp_back_timer_timeout"]
 [connection signal="timeout" from="readyToTpTimer" to="." method="_on_ready_to_tp_timer_timeout"]
+[connection signal="timeout" from="delayHomingTimer" to="." method="_on_delay_homing_timer_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]

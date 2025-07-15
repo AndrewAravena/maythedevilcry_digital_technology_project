@@ -19,6 +19,7 @@ func _process(delta: float):
 			can_track = false 
 			$Timer.start()
 		position += direction * speed * delta
+		
 	else:
 		print("did not find player")
 
