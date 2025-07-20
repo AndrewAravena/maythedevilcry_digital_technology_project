@@ -16,7 +16,7 @@ var delay_bullets_shot = 1
 var can_shoot_homing_bullets_again = true
 var can_shoot_delay_again = true
 var ready_to_tp = false
-var can_attack_3 = false
+var can_attack_4 = false
 @onready var old_pos = self.global_position
 
 
@@ -32,13 +32,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	player = get_tree().get_first_node_in_group("player")
 	var player_pos = player.global_position
+	$towardPlayer.look_at(player_pos)
 	if homing_bullets_shot <= 3 and can_shoot_homing_bullets_again == true:
 		_attack_one()
 		$readyToTpTimer.start()
 	_attack_two()
 	if delay_bullets_shot <= 3 and can_shoot_delay_again == true:
 		_attack_three()
-	_attack_four()
+	if can_attack_4 == true:
+		_attack_four()
 			# elif homing_bullets_shot == 3 and can_shoot_homing_bullets_again == false:
 		# change timer here to increase time between each burst of shots
 		# $Timer2.start()
@@ -81,11 +83,12 @@ func _attack_three():
 		print("worked")
 
 func _attack_four():
-	if can_attack_3 == true:
-		var fast_bullet = fast_bullet_scene.instantiate()
-		fast_bullet.direction = (player.global_position - fast_bullet.global_position).normalized()
-		for i in 20:
-			add_sibling(fast_bullet)
+	var fast_bullet = fast_bullet_scene.instantiate()
+	fast_bullet.rotation = $towardPlayer.rotation
+	fast_bullet.global_position = homing_bullet_spawn.global_position
+	add_sibling(fast_bullet)
+	print("added bullet")
+	can_attack_4 = false
 
 func _on_timer_timeout() -> void:
 	can_shoot_homing_bullet = true
@@ -112,5 +115,5 @@ func _on_timer_3_timeout() -> void:
 	can_shoot_delay_again = true
 
 
-func _on_atk_3_timeout() -> void:
-	can_attack_3 = true
+func _on_atk_4_timeout() -> void:
+	can_attack_4 = true
