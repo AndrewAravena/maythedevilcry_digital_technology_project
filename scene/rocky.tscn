@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmk7asj2fqvdh"]
+
+[ext_resource type="Texture2D" uid="uid://b58wh1sqrdxj" path="res://assets/rocky_scared-Sheet.png" id="1_20xn0"]
+[ext_resource type="Script" uid="uid://cuj8gu2hk410s" path="res://sprite_2d.gd" id="2_6dt73"]
+
+[sub_resource type="Animation" id="Animation_mg2xv"]
+resource_name = "dance"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_kqf5o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ewwsc"]
+_data = {
+&"RESET": SubResource("Animation_kqf5o"),
+&"dance": SubResource("Animation_mg2xv")
+}
+
+[node name="Sprite2D2" type="Sprite2D"]
+texture = ExtResource("1_20xn0")
+hframes = 4
+script = ExtResource("2_6dt73")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ewwsc")
+}

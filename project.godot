@@ -20,13 +20,9 @@ config/icon="res://icon.svg"
 window/size/mode=2
 window/stretch/mode="canvas_items"
 
-[file_customization]
+[global_group]
 
-folder_colors={
-"res://assets/": "red",
-"res://scene/": "blue",
-"res://scripts/": "gray"
-}
+orb=""
 
 [input]
 

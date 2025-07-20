@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-class_name player_class
+@export var horns_hp_bar_path: NodePath
+@onready var horns_hp_bar = get_node(horns_hp_bar_path)
 
 @onready var _animated_sprite = $AnimationPlayer
 @onready var sword_jump = $boxhit
@@ -22,26 +23,32 @@ var is_dashing = false
 @export var jump_ammount = 2
 @export var accel = 290.0
 
-var attacking = false 
+var attacking = false
 var attack_weapon = "String"
-var current_equipped: String 
+var current_equipped: String
 var weapon_select = ["sword", "gun", "scythe"]
 var current_equipped_int: int = 0
 var min_wepons: int = 0
 var max_wepons: int = 2
 
+
+
 var horns: int = 5
 
+
+
+func _ready() -> void:
+	pass
+
 func _physics_process(delta):
+	
+	
 	
 	if not is_on_floor() and not is_dashing:
 		velocity.y += gravity * delta
 	jump_logic()
 	
 	
-	if Input.is_action_just_pressed("attack"):
-		attack()
-		
 	_animation_play()
 	
 	var dir = Input.get_axis("left", "right")
@@ -55,14 +62,12 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("right"):
 		$Node2D.scale.x = 1
-	
-	if attacking == false:
-		if Input.is_action_just_pressed("attack") :
-			pass
 
 	if Input.is_action_just_pressed("dash")and dash_ready == true :
 		dash_ready = false
 		is_dashing = true
+		if is_dashing == true:
+			_animated_sprite.play("dash")
 		$dashTimer.start()
 		
 	
@@ -77,18 +82,30 @@ func _physics_process(delta):
 	
 	weapon_equipped()
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT :
+		if event.is_pressed():
+			if event.double_click:
+				_animated_sprite.play(current_equipped + "_second")
+			else :
+				attack()
+	
+	
+	
+	
 func _animation_play():
 	if attacking == true:
 		await _animated_sprite.animation_finished
 		_animated_sprite.play("walking")
 
 func attack():
-	attacking = true 
+	
+	attacking = true
 	_animated_sprite.stop()
-	_animated_sprite.play("sword")
+	_animated_sprite.play(current_equipped)
 	await _animated_sprite.animation_finished
 	_animated_sprite.stop()
-	
+
 
 func _on_touchy_touch_death(body):
 	if body.has_meta("death"):
@@ -101,33 +118,37 @@ func jump_logic():
 		if Input.is_action_just_pressed("Jump"):
 			jump_ammount -= 1
 			
-			velocity.y = JUMP_VELOCITY 
+			velocity.y = JUMP_VELOCITY
 			dash_ready = true
-			print(velocity.x)		
+			print(velocity.x)
 	if not is_on_floor():
 		if jump_ammount > 0:
 			if Input.is_action_just_pressed("Jump"):
 				jump_ammount -= 1
-				
+				_animated_sprite.play("double jump")
 				velocity.y = JUMP_VELOCITY
+				await _animated_sprite.animation_finished
+				_animated_sprite.play("walking")
+				
+				
 				
 			
 			if Input.is_action_just_released("Jump"):
 				velocity.y = lerp(velocity.y, gravity, 0.02)
 				velocity.y *= 0.3
-	else: 
+	else:
 		return
 
 func sword_jump_logic():
-		if Input.is_action_just_pressed("sword_jump") and sword_jump_timer.is_stopped():
-			sword_jump_timer.start()
-			_animated_sprite.play("sword jumpp")
-			await _animated_sprite.animation_finished
-			_animated_sprite.play("walking")
-		if not sword_jump_timer.is_stopped():
-			var bodies = sword_jump.get_overlapping_bodies()
-			if len(bodies)>0:
-				velocity.y-= sword_jump_strongy
+	if Input.is_action_just_pressed("sword_jump") and sword_jump_timer.is_stopped():
+		sword_jump_timer.start()
+		_animated_sprite.play("sword jumpp")
+		await _animated_sprite.animation_finished
+		_animated_sprite.play("walking")
+	if not sword_jump_timer.is_stopped():
+		var bodies = sword_jump.get_overlapping_bodies()
+		if len(bodies)>0:
+			velocity.y-= sword_jump_strongy
 
 func _on_swordhit_area_entered(area: Area2D) -> void:
 	if area.is_in_group("hitbox"):
@@ -165,12 +186,20 @@ func weapon_body_entered(body: Node2D) -> void:
 func take_damage(body: Node2D) -> void:
 	if body is Enemy:
 		horns -= body.damage_to_deal
-		if horns <= 0:
-			print("he toucha ma spheggeti")
+		horns = max(horns, 0)
+		update_hp_bar()
+	if horns <= 0:
+		get_tree().reload_current_scene()
+		queue_free()
+			
+	if body is not Enemy and collision_layer == 3 :
+		horns -= 1
+		horns = max(horns, 0 )
+		update_hp_bar()
+	
+func update_hp_bar():
+	horns_hp_bar.set_hp(horns)
 
-			get_tree().reload_current_scene()
-			queue_free()
+			
 
-
-func _on_h_box_container_sort_children() -> void:
-	pass # Replace with function body.
+			

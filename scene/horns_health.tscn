@@ -1,0 +1,102 @@
+[gd_scene load_steps=15 format=3 uid="uid://ctwtqfmlj12yh"]
+
+[ext_resource type="Script" uid="uid://dieu4hhdjwwdn" path="res://scripts/horns_health.gd" id="1_5c310"]
+[ext_resource type="Texture2D" uid="uid://cdgyhnpkb8mrb" path="res://assets/horns_damaged.png" id="1_uk50s"]
+[ext_resource type="Texture2D" uid="uid://bu66nu1gek304" path="res://assets/horn_hp_full-Sheet.png" id="2_5c310"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk50s"]
+atlas = ExtResource("1_uk50s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c310"]
+atlas = ExtResource("1_uk50s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qeeng"]
+atlas = ExtResource("1_uk50s")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uqu3"]
+atlas = ExtResource("1_uk50s")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6453r"]
+atlas = ExtResource("1_uk50s")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmajc"]
+atlas = ExtResource("2_5c310")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80p6k"]
+atlas = ExtResource("2_5c310")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4yur"]
+atlas = ExtResource("2_5c310")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sjdi"]
+atlas = ExtResource("2_5c310")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmep7"]
+atlas = ExtResource("2_5c310")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ewa2g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk50s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5c310")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qeeng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uqu3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6453r")
+}],
+"loop": true,
+"name": &"damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmajc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80p6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4yur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sjdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmep7")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 90.0
+offset_bottom = 64.0
+script = ExtResource("1_5c310")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(31.5, 32)
+scale = Vector2(1.96875, 2)
+sprite_frames = SubResource("SpriteFrames_ewa2g")
+animation = &"full"

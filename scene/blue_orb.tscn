@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6pr65iybq0fs"]
+
+[ext_resource type="Texture2D" uid="uid://ijrd73c1d8ap" path="res://assets/blue_orb.png" id="1_j82e6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ntjep"]
+radius = 8.0
+
+[node name="Area2D" type="Area2D" groups=["orb"]]
+metadata/horn = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ntjep")
+
+[node name="BlueOrb" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_j82e6")

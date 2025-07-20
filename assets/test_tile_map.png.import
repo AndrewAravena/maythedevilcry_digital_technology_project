@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k3e7tk07xrm0"
-path="res://.godot/imported/dantsunemiku.png-1caaf3c27e9a4789e6e193782a557532.ctex"
+uid="uid://noossstahfga"
+path="res://.godot/imported/test_tile_map.png-50c4285010456376a5452032a657c378.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dantsunemiku.png"
-dest_files=["res://.godot/imported/dantsunemiku.png-1caaf3c27e9a4789e6e193782a557532.ctex"]
+source_file="res://assets/test_tile_map.png"
+dest_files=["res://.godot/imported/test_tile_map.png-50c4285010456376a5452032a657c378.ctex"]
 
 [params]
 
