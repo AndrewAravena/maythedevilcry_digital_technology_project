@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name player_class
+
 @export var horns_hp_bar_path: NodePath
 @onready var horns_hp_bar = get_node(horns_hp_bar_path)
 

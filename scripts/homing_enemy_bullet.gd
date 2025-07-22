@@ -20,6 +20,7 @@ func _process(delta: float):
 			$Timer.start()
 		position += direction * speed * delta
 		
+		
 	else:
 		print("did not find player")
 

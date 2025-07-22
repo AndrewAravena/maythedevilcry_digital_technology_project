@@ -20,7 +20,7 @@ position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_hf1ti")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.65
 autostart = true
 
 [node name="queueFreeTimer" type="Timer" parent="."]

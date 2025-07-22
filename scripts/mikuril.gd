@@ -65,6 +65,7 @@ func _attack_two(): # tp slash atk
 		var base_slash = base_slash_scene.instantiate()
 		base_slash.global_position = $Marker2D2.global_position
 		add_sibling(base_slash)
+		$atk4.start(3)
 
 func _tp(player_pos):
 	self.global_position = player_pos + Vector2(50, 0)
@@ -85,9 +86,9 @@ func _attack_three():
 func _attack_four():
 	var fast_bullet = fast_bullet_scene.instantiate()
 	fast_bullet.rotation = $towardPlayer.rotation
-	fast_bullet.global_position = homing_bullet_spawn.global_position
+	fast_bullet.global_position = $Marker2D2.global_position
 	add_sibling(fast_bullet)
-	print("added bullet")
+	# print("added bullet")
 	can_attack_4 = false
 
 func _on_timer_timeout() -> void:

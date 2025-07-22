@@ -31,3 +31,11 @@ func _on_timer_timeout() -> void:
 
 func _on_delay_timer_timeout() -> void:
 	can_track = true
+
+
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is player_class:
+		queue_free()
+		print("hit")
