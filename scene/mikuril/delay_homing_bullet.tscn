@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://bo48xqlxnie7w"]
 
-[ext_resource type="Script" uid="uid://dt8yqmui6ximk" path="res://scripts/delay_homing_bullet.gd" id="1_5arq2"]
+[ext_resource type="Script" uid="uid://dt8yqmui6ximk" path="res://scripts/mikuril/delay_homing_bullet.gd" id="1_0ln2x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sfnu4"]
 size = Vector2(50, 20)
 
 [node name="delay homing bullet" type="Area2D"]
-script = ExtResource("1_5arq2")
+script = ExtResource("1_0ln2x")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -25.0
@@ -25,9 +25,11 @@ autostart = true
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.75
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -248)
+[node name="alive" type="Timer" parent="."]
+wait_time = 12.5
+autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="delayTimer" to="." method="_on_delay_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="alive" to="." method="_on_alive_timeout"]

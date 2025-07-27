@@ -1,0 +1,153 @@
+[gd_scene load_steps=9 format=3 uid="uid://n06lmv4u3igo"]
+
+[ext_resource type="Script" uid="uid://25xx5llh2wi1" path="res://scripts/mikuril/mikuril.gd" id="1_pm1pp"]
+[ext_resource type="PackedScene" uid="uid://dt7w4rih1wu4v" path="res://scene/mikuril/homing-enemy-bullet.tscn" id="2_whdv4"]
+[ext_resource type="PackedScene" uid="uid://b63rh35tmfmf8" path="res://scene/mikuril/base_slash.tscn" id="3_emj4e"]
+[ext_resource type="PackedScene" uid="uid://bo48xqlxnie7w" path="res://scene/mikuril/delay_homing_bullet.tscn" id="4_ddw5g"]
+[ext_resource type="PackedScene" uid="uid://dpnmkitvhqxu3" path="res://scene/mikuril/base-bullet.tscn" id="5_ddw5g"]
+[ext_resource type="PackedScene" uid="uid://bsmgcxm1hatye" path="res://scene/mikuril/delay_fast_bullet.tscn" id="6_yn3de"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whdv4"]
+size = Vector2(40, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rh4d4"]
+size = Vector2(40, 94)
+
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("homing_bullet_spawn", "homing_bullet_rotation")]
+script = ExtResource("1_pm1pp")
+homing_bullet_scene = ExtResource("2_whdv4")
+homing_bullet_spawn = NodePath("Node2D")
+homing_bullet_rotation = NodePath("Marker2D")
+base_slash_scene = ExtResource("3_emj4e")
+delay_homing_bullet_scene = ExtResource("4_ddw5g")
+fast_bullet_scene = ExtResource("5_ddw5g")
+delay_fast_bullet = ExtResource("6_yn3de")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = 20.0
+offset_right = 20.0
+offset_bottom = 74.0
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-20, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(20, 47)
+shape = SubResource("RectangleShape2D_whdv4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 27)
+shape = SubResource("RectangleShape2D_rh4d4")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Timer2" type="Timer" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="tpBackTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="readyToTpTimer" type="Timer" parent="."]
+wait_time = 9.5
+one_shot = true
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(-73, 0)
+
+[node name="delayHomingTimer" type="Timer" parent="."]
+wait_time = 10.5
+
+[node name="Timer3" type="Timer" parent="."]
+
+[node name="atk4" type="Timer" parent="."]
+wait_time = 1.8
+autostart = true
+
+[node name="towardPlayer" type="Marker2D" parent="."]
+position = Vector2(-73, 0)
+
+[node name="bigAtkTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="bigAtkOverTimer" type="Timer" parent="."]
+wait_time = 45.0
+one_shot = true
+autostart = true
+
+[node name="bulletHellMode" type="Node2D" parent="."]
+position = Vector2(-117, 13)
+
+[node name="direc" type="Node2D" parent="bulletHellMode"]
+position = Vector2(-27, 16)
+
+[node name="pos1" type="Node2D" parent="bulletHellMode"]
+position = Vector2(19, 30)
+
+[node name="direc1" type="Node2D" parent="bulletHellMode/pos1"]
+position = Vector2(-19, 23)
+
+[node name="pos2" type="Node2D" parent="bulletHellMode"]
+position = Vector2(47, 58)
+
+[node name="direc2" type="Node2D" parent="bulletHellMode/pos2"]
+position = Vector2(-14, 31)
+
+[node name="pos3" type="Node2D" parent="bulletHellMode"]
+position = Vector2(81, 86)
+
+[node name="direc3" type="Node2D" parent="bulletHellMode/pos3"]
+position = Vector2(-9, 32)
+
+[node name="pos4" type="Node2D" parent="bulletHellMode"]
+position = Vector2(117, 103)
+
+[node name="direc4" type="Node2D" parent="bulletHellMode/pos4"]
+position = Vector2(0, 32)
+
+[node name="pos5" type="Node2D" parent="bulletHellMode"]
+position = Vector2(150, 93)
+
+[node name="direc5" type="Node2D" parent="bulletHellMode/pos5"]
+position = Vector2(13, 30)
+
+[node name="pos6" type="Node2D" parent="bulletHellMode"]
+position = Vector2(173, 63)
+
+[node name="direc6" type="Node2D" parent="bulletHellMode/pos6"]
+position = Vector2(21, 25)
+
+[node name="pos7" type="Node2D" parent="bulletHellMode"]
+position = Vector2(193, 33)
+
+[node name="direc7" type="Node2D" parent="bulletHellMode/pos7"]
+position = Vector2(30, 25)
+
+[node name="pos8" type="Node2D" parent="bulletHellMode"]
+position = Vector2(210, 0)
+
+[node name="direc8" type="Node2D" parent="bulletHellMode/pos8"]
+position = Vector2(24, 22)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="tpBackTimer" to="." method="_on_tp_back_timer_timeout"]
+[connection signal="timeout" from="readyToTpTimer" to="." method="_on_ready_to_tp_timer_timeout"]
+[connection signal="timeout" from="delayHomingTimer" to="." method="_on_delay_homing_timer_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]
+[connection signal="timeout" from="atk4" to="." method="_on_atk_4_timeout"]
+[connection signal="timeout" from="bigAtkTimer" to="." method="_on_big_atk_timer_timeout"]
+[connection signal="timeout" from="bigAtkOverTimer" to="." method="_on_big_atk_over_timer_timeout"]

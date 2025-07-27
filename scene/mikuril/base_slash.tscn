@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://b63rh35tmfmf8"]
 
-[ext_resource type="Script" uid="uid://xukum6um51gw" path="res://scripts/base_slash.gd" id="1_5gh5n"]
+[ext_resource type="Script" uid="uid://xukum6um51gw" path="res://scripts/mikuril/base_slash.gd" id="1_huknt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x7og"]
 size = Vector2(99, 28)
 
 [node name="baseSlash" type="Area2D"]
-script = ExtResource("1_5gh5n")
+script = ExtResource("1_huknt")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -49.0
