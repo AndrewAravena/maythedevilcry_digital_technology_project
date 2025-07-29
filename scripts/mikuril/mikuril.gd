@@ -28,7 +28,7 @@ var big_atk_1 = true
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	$delayHomingTimer.start()
-	$bulletHellMode.look_at($bulletHellMode/direc.global_position)
+	$bulletHellMode/pos.look_at($bulletHellMode/direc.global_position)
 	$bulletHellMode/pos1.look_at($bulletHellMode/pos1/direc1.global_position)
 	$bulletHellMode/pos2.look_at($bulletHellMode/pos2/direc2.global_position)
 	$bulletHellMode/pos3.look_at($bulletHellMode/pos3/direc3.global_position)
@@ -37,6 +37,18 @@ func _ready() -> void:
 	$bulletHellMode/pos6.look_at($bulletHellMode/pos6/direc6.global_position)
 	$bulletHellMode/pos7.look_at($bulletHellMode/pos7/direc7.global_position)
 	$bulletHellMode/pos8.look_at($bulletHellMode/pos8/direc8.global_position)
+	
+	print($bulletHellMode.global_position)
+	print($bulletHellMode/pos1.global_position)
+	print($bulletHellMode/pos2.global_position)
+	print($bulletHellMode/pos3.global_position)
+	print($bulletHellMode/pos4.global_position)
+	print($bulletHellMode/pos5.global_position)
+	print($bulletHellMode/pos6.global_position)
+	print($bulletHellMode/pos7.global_position)
+	print($bulletHellMode/pos8.global_position)
+	
+	
 	# var player_pos = player.global_position
 	# _tp(player_pos)
 
@@ -114,26 +126,59 @@ func _big_attack():
 		
 		
 		var bullet_hell_bullet0 = delay_fast_bullet.instantiate()
-		bullet_hell_bullet0.global_position = $bulletHellMode.global_position
-		bullet_hell_bullet0.rotation = $bulletHellMode.global_rotation
+		bullet_hell_bullet0.global_position = $bulletHellMode/pos.global_position
+		bullet_hell_bullet0.rotation = $bulletHellMode/pos.rotation
 		add_sibling(bullet_hell_bullet0)
 		
 		var bullet_hell_bullet1 = delay_fast_bullet.instantiate()
 		bullet_hell_bullet1.global_position = $bulletHellMode/pos1.global_position
-		bullet_hell_bullet1.rotation = $bulletHellMode/pos1.global_rotation
+		bullet_hell_bullet1.rotation = $bulletHellMode/pos1.rotation
 		add_sibling(bullet_hell_bullet1)
 		
 		var bullet_hell_bullet2 = delay_fast_bullet.instantiate()
 		bullet_hell_bullet2.global_position = $bulletHellMode/pos2.global_position
-		bullet_hell_bullet2.rotation = $bulletHellMode/pos2.global_rotation
+		bullet_hell_bullet2.rotation = $bulletHellMode/pos2.rotation
 		add_sibling(bullet_hell_bullet2)
 		
 		var bullet_hell_bullet3 = delay_fast_bullet.instantiate()
 		bullet_hell_bullet3.global_position = $bulletHellMode/pos3.global_position
-		bullet_hell_bullet3.rotation = $bulletHellMode/pos3.global_rotation
+		bullet_hell_bullet3.rotation = $bulletHellMode/pos3.rotation
 		add_sibling(bullet_hell_bullet3)
 		
+		var bullet_hell_bullet4 = delay_fast_bullet.instantiate()
+		bullet_hell_bullet4.global_position = $bulletHellMode/pos4.global_position
+		bullet_hell_bullet4.rotation = $bulletHellMode/pos4.rotation
+		add_sibling(bullet_hell_bullet4)
 		
+		var bullet_hell_bullet5 = delay_fast_bullet.instantiate()
+		bullet_hell_bullet5.global_position = $bulletHellMode/pos5.global_position
+		bullet_hell_bullet5.rotation = $bulletHellMode/pos5.rotation
+		add_sibling(bullet_hell_bullet5)
+		
+		var bullet_hell_bullet6 = delay_fast_bullet.instantiate()
+		bullet_hell_bullet6.global_position = $bulletHellMode/pos6.global_position
+		bullet_hell_bullet6.rotation = $bulletHellMode/pos6.rotation
+		add_sibling(bullet_hell_bullet6)
+		
+		var bullet_hell_bullet7 = delay_fast_bullet.instantiate()
+		bullet_hell_bullet7.global_position = $bulletHellMode/pos7.position
+		bullet_hell_bullet7.rotation = $bulletHellMode/pos7.rotation
+		add_sibling(bullet_hell_bullet7)
+		
+		var bullet_hell_bullet8 = delay_fast_bullet.instantiate()
+		bullet_hell_bullet8.global_position = $bulletHellMode/pos8.global_position
+		bullet_hell_bullet8.rotation = $bulletHellMode/pos8.rotation
+		add_sibling(bullet_hell_bullet8)
+		
+		print($bulletHellMode.global_position)
+		print($bulletHellMode/pos1.global_position)
+		print($bulletHellMode/pos2.global_position)
+		print($bulletHellMode/pos3.global_position)
+		print($bulletHellMode/pos4.global_position)
+		print($bulletHellMode/pos5.global_position)
+		print($bulletHellMode/pos6.global_position)
+		print($bulletHellMode/pos7.global_position)
+		print($bulletHellMode/pos8.global_position)
 		big_atk_1 = false
 
 func _on_timer_timeout() -> void:

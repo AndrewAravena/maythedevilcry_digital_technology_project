@@ -17,7 +17,7 @@ big_atk_pos = NodePath("../Node2D")
 [node name="player" parent="." instance=ExtResource("3_kdqw7")]
 position = Vector2(295, 316)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." groups=["bigAtkPos"]]
 position = Vector2(613, 133)
 
 [node name="Node2D2" type="Node2D" parent="." groups=["delay"]]
