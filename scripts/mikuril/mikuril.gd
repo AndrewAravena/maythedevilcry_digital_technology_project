@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+class_name mikuril_class
 
 @export var homing_bullet_scene : PackedScene
 @export var homing_bullet_spawn : Node
@@ -21,6 +21,7 @@ var ready_to_tp = false
 var can_attack_4 = false
 var big_atk_active = false
 var big_atk_1 = true
+var can_activate_big_atk_1 = true
 @onready var old_pos = self.global_position
 
 
@@ -28,7 +29,7 @@ var big_atk_1 = true
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	$delayHomingTimer.start()
-	$bulletHellMode/pos.look_at($bulletHellMode/direc.global_position)
+	$bulletHellMode/pos.look_at($bulletHellMode/pos/direc.global_position)
 	$bulletHellMode/pos1.look_at($bulletHellMode/pos1/direc1.global_position)
 	$bulletHellMode/pos2.look_at($bulletHellMode/pos2/direc2.global_position)
 	$bulletHellMode/pos3.look_at($bulletHellMode/pos3/direc3.global_position)
@@ -121,8 +122,9 @@ func _attack_four():
 	can_attack_4 = false
 
 func _big_attack():
+	self.global_position = big_atk_pos.global_position
 	if big_atk_1 == true:
-		self.global_position = big_atk_pos.global_position
+		
 		
 		
 		var bullet_hell_bullet0 = delay_fast_bullet.instantiate()
@@ -180,6 +182,9 @@ func _big_attack():
 		print($bulletHellMode/pos7.global_position)
 		print($bulletHellMode/pos8.global_position)
 		big_atk_1 = false
+		# $canBigAtk1.start()
+		# if can_activate_big_atk_1 == true:
+			# $bigAtk1.start()
 
 func _on_timer_timeout() -> void:
 	can_shoot_homing_bullet = true
@@ -217,3 +222,12 @@ func _on_big_atk_timer_timeout() -> void:
 func _on_big_atk_over_timer_timeout() -> void:
 	big_atk_active = false
 	self.global_position = old_pos
+
+
+func _on_big_atk_1_timeout() -> void:
+	big_atk_1 = true
+
+
+func _on_can_big_atk_1_timeout() -> void:
+	can_activate_big_atk_1 = false
+	big_atk_1 = false

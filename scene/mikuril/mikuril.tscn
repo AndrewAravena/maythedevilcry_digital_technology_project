@@ -81,7 +81,7 @@ autostart = true
 position = Vector2(-73, 0)
 
 [node name="bigAtkTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 30.0
 one_shot = true
 autostart = true
 
@@ -136,7 +136,7 @@ position = Vector2(56, 85)
 position = Vector2(21, 25)
 
 [node name="pos7" type="Node2D" parent="bulletHellMode"]
-position = Vector2(82, 62)
+position = Vector2(706, 199)
 
 [node name="direc7" type="Node2D" parent="bulletHellMode/pos7"]
 position = Vector2(30, 25)
@@ -147,6 +147,13 @@ position = Vector2(104, 29)
 [node name="direc8" type="Node2D" parent="bulletHellMode/pos8"]
 position = Vector2(24, 22)
 
+[node name="bigAtk1" type="Timer" parent="."]
+wait_time = 2.3
+one_shot = true
+
+[node name="canBigAtk1" type="Timer" parent="."]
+wait_time = 7.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="timeout" from="tpBackTimer" to="." method="_on_tp_back_timer_timeout"]
@@ -156,3 +163,5 @@ position = Vector2(24, 22)
 [connection signal="timeout" from="atk4" to="." method="_on_atk_4_timeout"]
 [connection signal="timeout" from="bigAtkTimer" to="." method="_on_big_atk_timer_timeout"]
 [connection signal="timeout" from="bigAtkOverTimer" to="." method="_on_big_atk_over_timer_timeout"]
+[connection signal="timeout" from="bigAtk1" to="." method="_on_big_atk_1_timeout"]
+[connection signal="timeout" from="canBigAtk1" to="." method="_on_can_big_atk_1_timeout"]

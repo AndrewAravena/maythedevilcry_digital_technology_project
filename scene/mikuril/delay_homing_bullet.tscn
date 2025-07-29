@@ -19,14 +19,14 @@ color = Color(1, 1, 0, 1)
 shape = SubResource("RectangleShape2D_sfnu4")
 
 [node name="delayTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.75
 
 [node name="alive" type="Timer" parent="."]
-wait_time = 12.5
+wait_time = 9.5
 autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

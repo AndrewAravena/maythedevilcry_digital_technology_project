@@ -8,17 +8,20 @@
 
 [node name="StaticBody2D" parent="." instance=ExtResource("1_m0kk3")]
 position = Vector2(616, 377)
-metadata/floor = false
+metadata/floor = true
 
 [node name="CharacterBody2D" parent="." node_paths=PackedStringArray("big_atk_pos") instance=ExtResource("2_fa7dx")]
 position = Vector2(807, 292)
-big_atk_pos = NodePath("../Node2D")
+big_atk_pos = NodePath("../Node2D3")
 
 [node name="player" parent="." instance=ExtResource("3_kdqw7")]
 position = Vector2(295, 316)
 
 [node name="Node2D" type="Node2D" parent="." groups=["bigAtkPos"]]
-position = Vector2(613, 133)
+position = Vector2(807, 292)
 
 [node name="Node2D2" type="Node2D" parent="." groups=["delay"]]
 position = Vector2(809, 63)
+
+[node name="Node2D3" type="Node2D" parent="."]
+position = Vector2(613, 133)

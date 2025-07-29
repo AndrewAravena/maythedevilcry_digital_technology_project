@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+class_name fast_delay_bullet_class
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
