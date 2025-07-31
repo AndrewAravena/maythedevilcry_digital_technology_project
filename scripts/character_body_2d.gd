@@ -12,7 +12,7 @@ var health_min = 0
 
 var dead: bool = false
 var talking_damage: bool = false
-var damage_to_deal = 20
+var damage_to_deal = 1
 var is_dealing_damage: bool = false
 
 var dir: Vector2 
@@ -25,6 +25,9 @@ func _process(delta: float) -> void:
 		velocity.y += gravity * delta
 		velocity.x = 0
 	move(delta)
+	
+	print(health)
+	
 	move_and_slide()
 func move(delta):
 	if !dead: 
@@ -42,3 +45,10 @@ func _on_direction_timer_timeout() -> void:
 func choose(array):
 	array.shuffle()
 	return array.front()
+
+func take_damage():
+
+	health -=10
+	if health <= 0:
+		queue_free()
+	

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt7w4rih1wu4v"]
+
+[ext_resource type="Script" uid="uid://d4i0toat8m4wi" path="res://scripts/homing_enemy_bullet.gd" id="1_l73i1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hf1ti"]
+size = Vector2(40, 40)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_l73i1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -18.0
+offset_top = -17.0
+offset_right = 22.0
+offset_bottom = 23.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 3)
+shape = SubResource("RectangleShape2D_hf1ti")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true

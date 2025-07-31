@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cu8log8udt0jh"]
+
+[ext_resource type="PackedScene" uid="uid://8injipo77lnl" path="res://scene/placeholder.tscn" id="1_ba3bs"]
+[ext_resource type="PackedScene" uid="uid://dlawxjcvcqoua" path="res://scene/testplatform.tscn" id="2_swhd1"]
+[ext_resource type="PackedScene" uid="uid://ce3ovso7snblc" path="res://scene/dantsune_Miku.tscn" id="3_kd301"]
+[ext_resource type="PackedScene" uid="uid://cpu76c680vtxu" path="res://scene/enemy.tscn" id="4_swhd1"]
+[ext_resource type="Texture2D" uid="uid://bdijls82db5t" path="res://assets/889b86dfb255824f611c12f367f69cb6.jpg" id="5_kd301"]
+
+[node name="Node2D" instance=ExtResource("1_ba3bs")]
+
+[node name="StaticBody2D" parent="." index="0" instance=ExtResource("2_swhd1")]
+position = Vector2(16, 231)
+
+[node name="CharacterBody2D" parent="." index="1" instance=ExtResource("3_kd301")]
+position = Vector2(116, 137)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" index="2"]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+
+[node name="CharacterBody2D2" parent="." index="2" instance=ExtResource("4_swhd1")]
+position = Vector2(292, 204)
+
+[node name="StaticBody2D2" parent="." index="3" instance=ExtResource("2_swhd1")]
+position = Vector2(-1216, 10)
+rotation = -1.57003
+
+[node name="StaticBody2D2" parent="StaticBody2D2" index="2" instance=ExtResource("2_swhd1")]
+position = Vector2(-77.5415, 3218.06)
+rotation = -0.00426447
+
+[node name="889b86Dfb255824f611c12f367f69Cb6" type="Sprite2D" parent="." index="4"]
+z_index = -1
+position = Vector2(492, 233)
+scale = Vector2(4.04348, 4.30676)
+texture = ExtResource("5_kd301")
