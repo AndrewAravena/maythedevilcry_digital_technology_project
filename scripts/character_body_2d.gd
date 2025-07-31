@@ -19,6 +19,7 @@ var dir: Vector2
 const gravity = 500 
 var knockback_force = 200
 var is_roaming: bool = true 
+var damage_recieved:= 0 
 
 func _process(delta: float) -> void:
 	if !is_on_floor():
@@ -26,7 +27,7 @@ func _process(delta: float) -> void:
 		velocity.x = 0
 	move(delta)
 	
-	print(health)
+	
 	
 	move_and_slide()
 func move(delta):
@@ -46,9 +47,14 @@ func choose(array):
 	array.shuffle()
 	return array.front()
 
-func take_damage():
+func take_damage(damage_recieved):
 
-	health -=10
+	health -= damage_recieved
 	if health <= 0:
 		queue_free()
+	
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	take_damage(damage_recieved)
 	
