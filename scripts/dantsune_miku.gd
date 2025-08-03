@@ -48,7 +48,7 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	
-	print(weapons_damage[str(attack_weapon)])
+	print(attack_weapon)
 	
 	if not is_on_floor() and not is_dashing:
 		velocity.y += gravity * delta
