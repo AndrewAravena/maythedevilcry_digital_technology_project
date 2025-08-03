@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://n06lmv4u3igo"]
+[gd_scene load_steps=11 format=3 uid="uid://n06lmv4u3igo"]
 
 [ext_resource type="Script" uid="uid://25xx5llh2wi1" path="res://scripts/mikuril/mikuril.gd" id="1_pm1pp"]
 [ext_resource type="PackedScene" uid="uid://dt7w4rih1wu4v" path="res://scene/mikuril/homing-enemy-bullet.tscn" id="2_whdv4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dpnmkitvhqxu3" path="res://scene/mikuril/base-bullet.tscn" id="5_ddw5g"]
 [ext_resource type="PackedScene" uid="uid://bsmgcxm1hatye" path="res://scene/mikuril/delay_fast_bullet.tscn" id="6_yn3de"]
 [ext_resource type="Script" uid="uid://chniv1q0qa8op" path="res://scripts/mikuril/bullet_hell_mode.gd" id="7_qjrw8"]
+[ext_resource type="Script" uid="uid://try0igsfaouy" path="res://scene/mikuril/rotate_bullet_spawn.gd" id="8_dp1cd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whdv4"]
 size = Vector2(40, 94)
@@ -153,6 +154,10 @@ one_shot = true
 
 [node name="canBigAtk1" type="Timer" parent="."]
 wait_time = 7.0
+
+[node name="rotateBulletSpawn" type="Node2D" parent="."]
+position = Vector2(0, 103)
+script = ExtResource("8_dp1cd")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

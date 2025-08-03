@@ -10,6 +10,7 @@ class_name mikuril_class
 @export var delay_homing_bullet_scene : PackedScene
 @export var fast_bullet_scene: PackedScene
 @export var delay_fast_bullet: PackedScene
+@onready var bullet_hell_b = preload("res://scene/mikuril/bullet_hell_bullet.tscn")
 var player : Node
 var can_shoot_homing_bullet = true
 var can_shoot_delay_bullet = false
@@ -22,6 +23,7 @@ var can_attack_4 = false
 var big_atk_active = false
 var big_atk_1 = true
 var can_activate_big_atk_1 = true
+var big_atk_2 = true
 @onready var old_pos = self.global_position
 
 
@@ -49,7 +51,7 @@ func _ready() -> void:
 	print($bulletHellMode/pos7.global_position)
 	print($bulletHellMode/pos8.global_position)
 	
-	
+	_big_attack()
 	# var player_pos = player.global_position
 	# _tp(player_pos)
 
@@ -73,8 +75,8 @@ func _process(delta: float) -> void:
 			# change timer here to increase time between each burst of shots
 			# $Timer2.start()
 			# homing_bullets_shot = 5
-	else:
-		_big_attack()
+	# else:
+		# _big_attack()
 
 
 
@@ -130,47 +132,51 @@ func _big_attack():
 		var bullet_hell_bullet0 = delay_fast_bullet.instantiate()
 		bullet_hell_bullet0.global_position = $bulletHellMode/pos.global_position
 		bullet_hell_bullet0.rotation = $bulletHellMode/pos.rotation
-		add_sibling(bullet_hell_bullet0)
 		
 		var bullet_hell_bullet1 = delay_fast_bullet.instantiate()
 		bullet_hell_bullet1.global_position = $bulletHellMode/pos1.global_position
 		bullet_hell_bullet1.rotation = $bulletHellMode/pos1.rotation
-		add_sibling(bullet_hell_bullet1)
 		
 		var bullet_hell_bullet2 = delay_fast_bullet.instantiate()
 		bullet_hell_bullet2.global_position = $bulletHellMode/pos2.global_position
 		bullet_hell_bullet2.rotation = $bulletHellMode/pos2.rotation
-		add_sibling(bullet_hell_bullet2)
 		
 		var bullet_hell_bullet3 = delay_fast_bullet.instantiate()
 		bullet_hell_bullet3.global_position = $bulletHellMode/pos3.global_position
 		bullet_hell_bullet3.rotation = $bulletHellMode/pos3.rotation
-		add_sibling(bullet_hell_bullet3)
 		
 		var bullet_hell_bullet4 = delay_fast_bullet.instantiate()
 		bullet_hell_bullet4.global_position = $bulletHellMode/pos4.global_position
 		bullet_hell_bullet4.rotation = $bulletHellMode/pos4.rotation
-		add_sibling(bullet_hell_bullet4)
 		
 		var bullet_hell_bullet5 = delay_fast_bullet.instantiate()
 		bullet_hell_bullet5.global_position = $bulletHellMode/pos5.global_position
 		bullet_hell_bullet5.rotation = $bulletHellMode/pos5.rotation
-		add_sibling(bullet_hell_bullet5)
 		
 		var bullet_hell_bullet6 = delay_fast_bullet.instantiate()
 		bullet_hell_bullet6.global_position = $bulletHellMode/pos6.global_position
 		bullet_hell_bullet6.rotation = $bulletHellMode/pos6.rotation
-		add_sibling(bullet_hell_bullet6)
 		
 		var bullet_hell_bullet7 = delay_fast_bullet.instantiate()
 		bullet_hell_bullet7.global_position = $bulletHellMode/pos7.position
 		bullet_hell_bullet7.rotation = $bulletHellMode/pos7.rotation
-		add_sibling(bullet_hell_bullet7)
 		
 		var bullet_hell_bullet8 = delay_fast_bullet.instantiate()
 		bullet_hell_bullet8.global_position = $bulletHellMode/pos8.global_position
 		bullet_hell_bullet8.rotation = $bulletHellMode/pos8.rotation
-		add_sibling(bullet_hell_bullet8)
+		
+		for a in 5:
+			add_sibling(bullet_hell_bullet0)
+			add_sibling(bullet_hell_bullet1)
+			add_sibling(bullet_hell_bullet2)
+			add_sibling(bullet_hell_bullet3)
+			add_sibling(bullet_hell_bullet4)
+			add_sibling(bullet_hell_bullet5)
+			add_sibling(bullet_hell_bullet6)
+			add_sibling(bullet_hell_bullet7)
+			add_sibling(bullet_hell_bullet8)
+			print("worky")
+			# await(get_tree().create_timer(0.2).timeout)
 		
 		print($bulletHellMode.global_position)
 		print($bulletHellMode/pos1.global_position)
@@ -185,6 +191,15 @@ func _big_attack():
 		# $canBigAtk1.start()
 		# if can_activate_big_atk_1 == true:
 			# $bigAtk1.start()
+	# if big_atk_2 == true and big_atk_1 == false:
+		# var direction = 0.0
+		# var bullet_count = 3
+		# for i in 5:
+			# for b in bullet_count:
+				# direction = b * (360/bullet_count) + $rotateBulletSpawn.rotation_degrees
+				# shoot_bh_bullet($rotateBulletSpawn.global_position, direction, 75)
+			# await(get_tree().create_timer(0.5).timeout)
+		# big_atk_2 = false
 
 func _on_timer_timeout() -> void:
 	can_shoot_homing_bullet = true
@@ -231,3 +246,9 @@ func _on_big_atk_1_timeout() -> void:
 func _on_can_big_atk_1_timeout() -> void:
 	can_activate_big_atk_1 = false
 	big_atk_1 = false
+
+func shoot_bh_bullet(spawn_location, direction: float, speed: float):
+	var bhb = bullet_hell_b.instantiate()
+	add_sibling(bhb)
+	bhb.global_position = spawn_location
+	bhb.ini(Vector2.from_angle(deg_to_rad(direction)).normalized() * speed)
