@@ -5,8 +5,9 @@ class_name Enemy
 
 const speed = 400
 var is_enemy_chase: bool
-
-var health = 20
+var enemy_tier := 1
+var enemy_level_dif := 0.5
+var health = 500
 var health_max = 20
 var health_min = 0 
 
@@ -22,6 +23,7 @@ var is_roaming: bool = true
 var damage_recieved:= 0 
 
 func _process(delta: float) -> void:
+	
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		velocity.x = 0
@@ -48,13 +50,14 @@ func choose(array):
 	return array.front()
 
 func take_damage(damage_recieved):
-
-	health -= damage_recieved
+	health -= damage_recieved * (enemy_tier * enemy_level_dif)
+	print(damage_recieved)
 	if health <= 0:
 		queue_free()
 	
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	take_damage(damage_recieved)
+	if area.is_in_group("weapon"):
+		take_damage(area.get_parent().get_parent().damage_calculations())
 	

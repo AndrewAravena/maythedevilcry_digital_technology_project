@@ -515,7 +515,7 @@ hframes = 26
 vframes = 9
 frame = 209
 
-[node name="sword" type="Area2D" parent="Node2D"]
+[node name="sword" type="Area2D" parent="Node2D" groups=["weapon"]]
 collision_layer = 3
 collision_mask = 3
 
@@ -524,7 +524,7 @@ visible = false
 polygon = PackedVector2Array(1, -20, -45, -31, 28, -29, 47, -22, 66, -1, 48, 15, 28, 24, -7, 29, 23, 12, 20, -4)
 disabled = true
 
-[node name="scythe" type="Area2D" parent="Node2D"]
+[node name="scythe" type="Area2D" parent="Node2D" groups=["weapon"]]
 visible = false
 collision_layer = 3
 collision_mask = 3
@@ -535,7 +535,7 @@ position = Vector2(-2, -1)
 polygon = PackedVector2Array(-37, -2, -31, -23, -19, -41, 13, -46, 36, -33, 46, -23, 49, -6, 50, 11, 40, 20, 14, 17, 21, -10, 12, -20, 0, -18, -13, -11, -20, 2, -34, 23)
 disabled = true
 
-[node name="scythe_second" type="Area2D" parent="Node2D"]
+[node name="scythe_second" type="Area2D" parent="Node2D" groups=["weapon"]]
 visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/scythe_second"]
