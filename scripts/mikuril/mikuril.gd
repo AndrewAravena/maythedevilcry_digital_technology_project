@@ -10,6 +10,7 @@ class_name mikuril_class
 @export var delay_homing_bullet_scene : PackedScene
 @export var fast_bullet_scene: PackedScene
 @export var delay_fast_bullet: PackedScene
+@export var eruption: PackedScene
 @onready var bullet_hell_b = preload("res://scene/mikuril/bullet_hell_bullet.tscn")
 var player : Node
 var can_shoot_homing_bullet = true
@@ -78,13 +79,13 @@ func _attack_one(): # homing bullet triple shot
 		homing_bullets_shot += 1
 
 func _attack_two(): # tp slash atk
-	var player_pos = player.global_position
+	var player_pos = player.global_position # find player
 	if ready_to_tp == true:
-		_tp(player_pos)
-		var base_slash = base_slash_scene.instantiate()
+		_tp(player_pos) # tp to player
+		var base_slash = base_slash_scene.instantiate() # slash attack
 		base_slash.global_position = $Marker2D2.global_position
 		add_sibling(base_slash)
-		$atk4.start(3)
+		$atk4.start(3) # timer for next attack
 
 func _tp(player_pos):
 	self.global_position = player_pos + Vector2(50, 0)
@@ -173,13 +174,22 @@ func _big_attack():
 	if big_atk_2 == true and big_atk_1 == false:
 		var direction = 0.0
 		var bullet_count = 3
+		var b_spawn_speed = 0.5
 		for x in 5:
 			for o in 15:
 				var bullet_bang = fast_bullet_scene.instantiate()
-				bullet_bang.rotation = randi_range(-90, 90)
-				bullet_bang.global_position = $bulletHellMode.global_position
+				direction = o * (360/bullet_count) + $rotateBulletSpawn.rotation_degrees
+				bullet_bang.rotation_degrees = randi_range(0, 180)
+				print(bullet_bang.rotation)
+				bullet_bang.global_position = $bulletHellMode/pos4.global_position
 				add_sibling(bullet_bang)
-			await(get_tree().create_timer(0.5).timeout)
+				await(get_tree().create_timer(b_spawn_speed).timeout)
+				
+				var erupt = eruption.instantiate()
+				erupt.global_position = Vector2(randi_range(0, 1152), 300)
+				add_sibling(erupt)
+			b_spawn_speed -= 0.095
+			await(get_tree().create_timer(1.5).timeout)
 		#for i in 5:
 			#for b in bullet_count:
 				#direction = b * (360/bullet_count) + $rotateBulletSpawn.rotation_degrees

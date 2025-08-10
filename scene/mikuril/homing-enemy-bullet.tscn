@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dt7w4rih1wu4v"]
 
-[ext_resource type="Script" uid="uid://d4i0toat8m4wi" path="res://scripts/homing_enemy_bullet.gd" id="1_l73i1"]
+[ext_resource type="Script" uid="uid://d4i0toat8m4wi" path="res://scripts/mikuril/homing_enemy_bullet.gd" id="1_l73i1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hf1ti"]
 size = Vector2(57, 21)

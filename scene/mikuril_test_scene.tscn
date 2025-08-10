@@ -25,3 +25,7 @@ position = Vector2(809, 63)
 
 [node name="Node2D3" type="Node2D" parent="."]
 position = Vector2(613, 133)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = -40.0
+offset_right = 1152.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://n06lmv4u3igo"]
+[gd_scene load_steps=12 format=3 uid="uid://n06lmv4u3igo"]
 
 [ext_resource type="Script" uid="uid://25xx5llh2wi1" path="res://scripts/mikuril/mikuril.gd" id="1_pm1pp"]
 [ext_resource type="PackedScene" uid="uid://dt7w4rih1wu4v" path="res://scene/mikuril/homing-enemy-bullet.tscn" id="2_whdv4"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bo48xqlxnie7w" path="res://scene/mikuril/delay_homing_bullet.tscn" id="4_ddw5g"]
 [ext_resource type="PackedScene" uid="uid://dpnmkitvhqxu3" path="res://scene/mikuril/base-bullet.tscn" id="5_ddw5g"]
 [ext_resource type="PackedScene" uid="uid://bsmgcxm1hatye" path="res://scene/mikuril/delay_fast_bullet.tscn" id="6_yn3de"]
+[ext_resource type="PackedScene" uid="uid://drwjdrpplic3y" path="res://scene/mikuril/mikuril_erupt.tscn" id="7_fh6a8"]
 [ext_resource type="Script" uid="uid://chniv1q0qa8op" path="res://scripts/mikuril/bullet_hell_mode.gd" id="7_qjrw8"]
-[ext_resource type="Script" uid="uid://try0igsfaouy" path="res://scene/mikuril/rotate_bullet_spawn.gd" id="8_dp1cd"]
+[ext_resource type="Script" uid="uid://try0igsfaouy" path="res://scripts/mikuril/rotate_bullet_spawn.gd" id="8_dp1cd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whdv4"]
 size = Vector2(40, 94)
@@ -24,6 +25,7 @@ base_slash_scene = ExtResource("3_emj4e")
 delay_homing_bullet_scene = ExtResource("4_ddw5g")
 fast_bullet_scene = ExtResource("5_ddw5g")
 delay_fast_bullet = ExtResource("6_yn3de")
+eruption = ExtResource("7_fh6a8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -20.0
@@ -82,7 +84,7 @@ autostart = true
 position = Vector2(-73, 0)
 
 [node name="bigAtkTimer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
