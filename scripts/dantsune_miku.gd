@@ -47,8 +47,8 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta):
+
 	
-	print(attack_weapon)
 	
 	if not is_on_floor() and not is_dashing:
 		velocity.y += gravity * delta
@@ -87,6 +87,9 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	weapon_equipped()
+	
+	
+	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT :
@@ -127,7 +130,7 @@ func jump_logic():
 			
 			velocity.y = JUMP_VELOCITY
 			dash_ready = true
-			print(velocity.x)
+			
 	if not is_on_floor():
 		if jump_ammount > 0:
 			if Input.is_action_just_pressed("Jump"):
@@ -157,11 +160,6 @@ func sword_jump_logic():
 		if len(bodies)>0:
 			velocity.y-= sword_jump_strongy
 
-func _on_swordhit_area_entered(area: Area2D) -> void:
-	if area.is_in_group("hitbox"):
-		print("hit")
-		area.take_damage
-
 func weapon_animation():
 	_animated_sprite.play(attack_weapon)
 
@@ -185,7 +183,9 @@ func weapon_equipped():
 func weapon_body_entered(body: Node2D) -> void:
 	if attacking :
 		if body is Enemy:
+			print("hit enememgf")
 			body.take_damage(damage_calculations())
+			
 			
 			
 			
@@ -210,7 +210,7 @@ func update_hp_bar():
 	horns_hp_bar.set_hp(horns)
 
 func damage_calculations():
-	pass
-	#((weapons_damage[current_equipped])*orbs_amount)*(1*0.5)
+	
+	return ((weapons_damage[current_equipped])*orbs_amount) 
 	
 		
