@@ -31,7 +31,13 @@ var current_equipped_int: int = 0
 var min_wepons: int = 0
 var max_wepons: int = 2
 
-
+var weapons_damage = {
+	"scythe" : 350,
+	"sword": 150, 
+	"gun": 200
+	
+}
+@export var orbs_amount := 1 
 
 var horns: int = 5
 
@@ -41,7 +47,7 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta):
-	
+
 	
 	
 	if not is_on_floor() and not is_dashing:
@@ -81,11 +87,15 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	weapon_equipped()
+	
+	
+	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT :
 		if event.is_pressed():
 			if event.double_click:
+				_animated_sprite.animation_finished
 				_animated_sprite.play(current_equipped + "_second")
 			else :
 				attack()
@@ -120,7 +130,7 @@ func jump_logic():
 			
 			velocity.y = JUMP_VELOCITY
 			dash_ready = true
-			print(velocity.x)
+			
 	if not is_on_floor():
 		if jump_ammount > 0:
 			if Input.is_action_just_pressed("Jump"):
@@ -150,10 +160,6 @@ func sword_jump_logic():
 		if len(bodies)>0:
 			velocity.y-= sword_jump_strongy
 
-func _on_swordhit_area_entered(area: Area2D) -> void:
-	if area.is_in_group("hitbox"):
-		area.take_damage
-
 func weapon_animation():
 	_animated_sprite.play(attack_weapon)
 
@@ -170,13 +176,16 @@ func weapon_equipped():
 		else:
 			current_equipped_int -= 1
 	current_equipped = weapon_select[current_equipped_int]
+	attack_weapon = current_equipped
 	
 
 
 func weapon_body_entered(body: Node2D) -> void:
 	if attacking :
 		if body is Enemy:
-			body.take_damage()
+			print("hit enememgf")
+			body.take_damage(damage_calculations())
+			
 			
 			
 			
@@ -200,6 +209,8 @@ func take_damage(body: Node2D) -> void:
 func update_hp_bar():
 	horns_hp_bar.set_hp(horns)
 
-			
-
-			
+func damage_calculations():
+	
+	return ((weapons_damage[current_equipped])*orbs_amount) 
+	
+		

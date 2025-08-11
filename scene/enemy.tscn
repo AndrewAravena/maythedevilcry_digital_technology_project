@@ -27,9 +27,12 @@ position = Vector2(4.76837e-07, 1.19209e-07)
 scale = Vector2(1.25576, 1.25426)
 polygon = PackedVector2Array(-9.55597, 9.5674, 15.1303, 9.5674, 18.3156, 7.17555, 15.9266, -3.18913, 2.38899, -8.77011, -11.1486, -6.37826, -15.1303, 0.797283, -16, 8)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 light_mask = 3
 visibility_layer = 3
 shape = SubResource("CircleShape2D_f87vc")
 
 [connection signal="timeout" from="direction timer" to="." method="_on_direction_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
