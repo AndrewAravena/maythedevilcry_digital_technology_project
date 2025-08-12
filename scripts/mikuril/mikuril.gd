@@ -11,6 +11,7 @@ class_name mikuril_class
 @export var fast_bullet_scene: PackedScene
 @export var delay_fast_bullet: PackedScene
 @export var eruption: PackedScene
+@export var warning_scene : PackedScene
 @onready var bullet_hell_b = preload("res://scene/mikuril/bullet_hell_bullet.tscn")
 var player : Node
 var can_shoot_homing_bullet = true
@@ -173,9 +174,9 @@ func _big_attack():
 			# $bigAtk1.start()
 	if big_atk_2 == true and big_atk_1 == false:
 		var direction = 0.0
-		var bullet_count = 15
+		var bullet_count = 5
 		var b_spawn_speed = 0.5
-		for x in 5:
+		for x in 3:
 			for o in bullet_count:
 				var bullet_bang = fast_bullet_scene.instantiate()
 				direction = o * (360/bullet_count) + $rotateBulletSpawn.rotation_degrees
@@ -184,11 +185,9 @@ func _big_attack():
 				add_sibling(bullet_bang)
 				await(get_tree().create_timer(b_spawn_speed).timeout)
 				
-				var erupt = eruption.instantiate()
-				erupt.global_position = Vector2(randi_range(0, 1152), 300)
-				add_sibling(erupt)
-				bullet_count += 3
-			b_spawn_speed -= 0.095
+				_eruption_atk()
+				bullet_count += 5
+			b_spawn_speed -= 0.15
 			await(get_tree().create_timer(1.5).timeout)
 		#for i in 5:
 			#for b in bullet_count:
@@ -196,6 +195,19 @@ func _big_attack():
 				#shoot_bh_bullet($rotateBulletSpawn.global_position, direction, 75)
 			#await(get_tree().create_timer(0.5).timeout)
 		big_atk_2 = false
+
+func _eruption_atk():
+	var erupt_pos = Vector2(randi_range(0, 1152), 300)
+	var warning = warning_scene.instantiate()
+	warning.global_position = erupt_pos
+	add_sibling(warning)
+	
+	await(get_tree().create_timer(0.5).timeout)
+	
+	var erupt = eruption.instantiate()
+	erupt.global_position = erupt_pos
+	add_sibling(erupt)
+	
 
 func _on_timer_timeout() -> void:
 	can_shoot_homing_bullet = true
