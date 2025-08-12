@@ -1,5 +1,6 @@
-extends Area2D
+extends Node2D
 
+@export var platform : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,4 +13,9 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	queue_free()
+	_summon_p()
+
+func _summon_p():
+	var platform_spawn = platform.instantiate()
+	platform_spawn.global_position = Vector2(randi_range(0, 1152), randi_range(250, 350))
+	add_child(platform_spawn)

@@ -18,8 +18,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is player_class:
 		queue_free()
 		print("hit")
-	elif body.has_meta("floor"):
+	elif body.has_meta("floor") or body.has_meta("platform"):
 		queue_free()
+		print("queue free")
 
 
 func _on_timer_timeout() -> void:

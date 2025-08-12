@@ -173,14 +173,13 @@ func _big_attack():
 			# $bigAtk1.start()
 	if big_atk_2 == true and big_atk_1 == false:
 		var direction = 0.0
-		var bullet_count = 3
+		var bullet_count = 15
 		var b_spawn_speed = 0.5
 		for x in 5:
-			for o in 15:
+			for o in bullet_count:
 				var bullet_bang = fast_bullet_scene.instantiate()
 				direction = o * (360/bullet_count) + $rotateBulletSpawn.rotation_degrees
-				bullet_bang.rotation_degrees = randi_range(0, 180)
-				print(bullet_bang.rotation)
+				bullet_bang.rotation_degrees = randi_range(0, 185)
 				bullet_bang.global_position = $bulletHellMode/pos4.global_position
 				add_sibling(bullet_bang)
 				await(get_tree().create_timer(b_spawn_speed).timeout)
@@ -188,6 +187,7 @@ func _big_attack():
 				var erupt = eruption.instantiate()
 				erupt.global_position = Vector2(randi_range(0, 1152), 300)
 				add_sibling(erupt)
+				bullet_count += 3
 			b_spawn_speed -= 0.095
 			await(get_tree().create_timer(1.5).timeout)
 		#for i in 5:
