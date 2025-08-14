@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://n06lmv4u3igo"]
+[gd_scene load_steps=14 format=3 uid="uid://n06lmv4u3igo"]
 
 [ext_resource type="Script" uid="uid://25xx5llh2wi1" path="res://scripts/mikuril/mikuril.gd" id="1_pm1pp"]
 [ext_resource type="PackedScene" uid="uid://dt7w4rih1wu4v" path="res://scene/mikuril/homing-enemy-bullet.tscn" id="2_whdv4"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://chniv1q0qa8op" path="res://scripts/mikuril/bullet_hell_mode.gd" id="7_qjrw8"]
 [ext_resource type="Script" uid="uid://try0igsfaouy" path="res://scripts/mikuril/rotate_bullet_spawn.gd" id="8_dp1cd"]
 [ext_resource type="PackedScene" uid="uid://cp3gic32378jm" path="res://scene/warning.tscn" id="8_lofnf"]
+[ext_resource type="PackedScene" uid="uid://cojj1ehnr0iba" path="res://scene/mikuril/big_sword.tscn" id="9_7k2md"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whdv4"]
 size = Vector2(40, 94)
@@ -28,6 +29,7 @@ fast_bullet_scene = ExtResource("5_ddw5g")
 delay_fast_bullet = ExtResource("6_yn3de")
 eruption = ExtResource("7_fh6a8")
 warning_scene = ExtResource("8_lofnf")
+big_sword_scene = ExtResource("9_7k2md")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -20.0
@@ -91,7 +93,7 @@ one_shot = true
 autostart = true
 
 [node name="bigAtkOverTimer" type="Timer" parent="."]
-wait_time = 110.0
+wait_time = 100.0
 one_shot = true
 autostart = true
 
@@ -163,6 +165,10 @@ wait_time = 7.0
 position = Vector2(0, 103)
 script = ExtResource("8_dp1cd")
 
+[node name="swordTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="timeout" from="tpBackTimer" to="." method="_on_tp_back_timer_timeout"]
@@ -174,3 +180,4 @@ script = ExtResource("8_dp1cd")
 [connection signal="timeout" from="bigAtkOverTimer" to="." method="_on_big_atk_over_timer_timeout"]
 [connection signal="timeout" from="bigAtk1" to="." method="_on_big_atk_1_timeout"]
 [connection signal="timeout" from="canBigAtk1" to="." method="_on_can_big_atk_1_timeout"]
+[connection signal="timeout" from="swordTimer" to="." method="_on_sword_timer_timeout"]

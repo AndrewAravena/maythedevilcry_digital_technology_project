@@ -12,6 +12,7 @@ class_name mikuril_class
 @export var delay_fast_bullet: PackedScene
 @export var eruption: PackedScene
 @export var warning_scene : PackedScene
+@export var big_sword_scene : PackedScene
 @onready var bullet_hell_b = preload("res://scene/mikuril/bullet_hell_bullet.tscn")
 var player : Node
 var can_shoot_homing_bullet = true
@@ -26,7 +27,14 @@ var big_atk_active = false
 var big_atk_1 = true
 var can_activate_big_atk_1 = true
 var big_atk_2 = true
+
+var homing_shot = _attack_one()
+var tp_slash = _attack_two()
+var delay_homing = _attack_three()
+var constant_bullet = _attack_four()
+
 @onready var old_pos = self.global_position
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -94,7 +102,7 @@ func _tp(player_pos):
 	ready_to_tp = false
 	
 
-func _attack_three():
+func _attack_three(): # delay homing bullet
 	var delay_homing_bullet = delay_homing_bullet_scene.instantiate()
 	delay_homing_bullet.global_position = homing_bullet_spawn.global_position
 	if can_shoot_delay_bullet == true:
@@ -104,7 +112,7 @@ func _attack_three():
 		delay_bullets_shot += 1
 		# print("worked")
 
-func _attack_four():
+func _attack_four(): # constant bullet
 	var fast_bullet = fast_bullet_scene.instantiate()
 	fast_bullet.rotation = $towardPlayer.rotation
 	fast_bullet.global_position = $Marker2D2.global_position
@@ -112,7 +120,7 @@ func _attack_four():
 	# print("added bullet")
 	can_attack_4 = false
 
-func _big_attack():
+func _big_attack(): # big bullet hell attack
 	self.global_position = big_atk_pos.global_position
 	if big_atk_1 == true:
 		
@@ -261,3 +269,10 @@ func shoot_bh_bullet(spawn_location, direction: float, speed: float):
 	add_child(bhb)
 	bhb.global_position = spawn_location
 	bhb.ini(Vector2.from_angle(deg_to_rad(direction)).normalized() * speed)
+
+
+func _on_sword_timer_timeout() -> void:
+	for i in 3:
+		var sword_explo = big_sword_scene.instantiate()
+		sword_explo.global_position = Vector2(randi_range(0, 1148), randi_range(0, -1500))
+		add_sibling(sword_explo)
