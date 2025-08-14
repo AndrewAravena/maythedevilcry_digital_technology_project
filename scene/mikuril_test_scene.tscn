@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c02s4g5emstcn"]
+[gd_scene load_steps=7 format=3 uid="uid://c02s4g5emstcn"]
 
 [ext_resource type="Script" uid="uid://cfsa2kq1ft2o1" path="res://scripts/mikuril_test_scene.gd" id="1_fa7dx"]
 [ext_resource type="PackedScene" uid="uid://dlawxjcvcqoua" path="res://scene/testplatform.tscn" id="1_m0kk3"]
 [ext_resource type="PackedScene" uid="uid://n06lmv4u3igo" path="res://scene/mikuril/mikuril.tscn" id="2_fa7dx"]
 [ext_resource type="PackedScene" uid="uid://djkc3kdia26yb" path="res://scene/mikuril/static_body_2d.tscn" id="2_kdqw7"]
 [ext_resource type="PackedScene" uid="uid://ce3ovso7snblc" path="res://scene/dantsune_Miku.tscn" id="3_kdqw7"]
+[ext_resource type="PackedScene" uid="uid://cojj1ehnr0iba" path="res://scene/mikuril/big_sword.tscn" id="6_2wx6v"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_fa7dx")
@@ -30,12 +31,24 @@ position = Vector2(809, 63)
 [node name="Node2D3" type="Node2D" parent="."]
 position = Vector2(613, 133)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_top = -40.0
-offset_right = 1152.0
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="Area2D" parent="." instance=ExtResource("6_2wx6v")]
+position = Vector2(382, -33)
+scale = Vector2(-0.775286, 0.734993)
+
+[node name="Area2D2" parent="." instance=ExtResource("6_2wx6v")]
+position = Vector2(701, -348)
+
+[node name="Area2D3" parent="." instance=ExtResource("6_2wx6v")]
+position = Vector2(191, -785)
+
+[node name="Area2D4" parent="." instance=ExtResource("6_2wx6v")]
+position = Vector2(1042, -1030)
+
+[node name="Area2D5" parent="." instance=ExtResource("6_2wx6v")]
+position = Vector2(529, -1117)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

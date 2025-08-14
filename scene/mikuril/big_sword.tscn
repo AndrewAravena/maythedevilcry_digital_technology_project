@@ -1,4 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cojj1ehnr0iba"]
+[gd_scene load_steps=6 format=3 uid="uid://cojj1ehnr0iba"]
+
+[ext_resource type="Script" uid="uid://dyb766ges5tpg" path="res://scripts/mikuril/big_sword.gd" id="1_aernm"]
+[ext_resource type="PackedScene" uid="uid://dds3ssvfbykkp" path="res://scene/mikuril/explosion.tscn" id="2_3mtuw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_axkep"]
 size = Vector2(230, 58.25)
@@ -10,6 +13,9 @@ size = Vector2(51, 423)
 size = Vector2(69.5, 110)
 
 [node name="Area2D" type="Area2D"]
+scale = Vector2(-0.966057, 0.858461)
+script = ExtResource("1_aernm")
+big_explosion_scene = ExtResource("2_3mtuw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -185.0
@@ -50,3 +56,5 @@ shape = SubResource("RectangleShape2D_3mtuw")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
 position = Vector2(149, -221)
 shape = SubResource("RectangleShape2D_3mtuw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
