@@ -27,11 +27,8 @@ var big_atk_active = false
 var big_atk_1 = true
 var can_activate_big_atk_1 = true
 var big_atk_2 = true
+var first_phase = true
 
-var homing_shot = _attack_one()
-var tp_slash = _attack_two()
-var delay_homing = _attack_three()
-var constant_bullet = _attack_four()
 
 @onready var old_pos = self.global_position
 
@@ -57,23 +54,24 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if big_atk_active == false:
-		player = get_tree().get_first_node_in_group("player")
-		var player_pos = player.global_position
-		$towardPlayer.look_at(player_pos)
-		if homing_bullets_shot <= 3 and can_shoot_homing_bullets_again == true:
-			_attack_one()
-			$readyToTpTimer.start()
-		if delay_bullets_shot <= 3 and can_shoot_delay_again == true:
-			_attack_three()
-		_attack_two()
+	if first_phase == true:
+		if big_atk_active == false:
+			player = get_tree().get_first_node_in_group("player")
+			var player_pos = player.global_position
+			$towardPlayer.look_at(player_pos)
+			if homing_bullets_shot <= 3 and can_shoot_homing_bullets_again == true:
+				_attack_one()
+				$readyToTpTimer.start()
+			if delay_bullets_shot <= 3 and can_shoot_delay_again == true:
+				_attack_three()
+			_attack_two()
 
-		if can_attack_4 == true:
-			_attack_four()
-				# elif homing_bullets_shot == 3 and can_shoot_homing_bullets_again == false:
-			# change timer here to increase time between each burst of shots
-			# $Timer2.start()
-			# homing_bullets_shot = 5
+			if can_attack_4 == true:
+				_attack_four()
+					# elif homing_bullets_shot == 3 and can_shoot_homing_bullets_again == false:
+				# change timer here to increase time between each burst of shots
+				# $Timer2.start()
+				# homing_bullets_shot = 5
 
 
 
@@ -196,7 +194,7 @@ func _big_attack(): # big bullet hell attack
 				_eruption_atk()
 				bullet_count += 5
 			b_spawn_speed -= 0.15
-			await(get_tree().create_timer(1.5).timeout)
+			await(get_tree().create_timer(3.0).timeout)
 		#for i in 5:
 			#for b in bullet_count:
 				#direction = b * (360/bullet_count) + $rotateBulletSpawn.rotation_degrees
@@ -205,7 +203,7 @@ func _big_attack(): # big bullet hell attack
 		big_atk_2 = false
 
 func _eruption_atk():
-	var erupt_pos = Vector2(randi_range(0, 1152), 300)
+	var erupt_pos = Vector2(randi_range(0, 1152), 315)
 	var warning = warning_scene.instantiate()
 	warning.global_position = erupt_pos
 	add_sibling(warning)
@@ -276,3 +274,11 @@ func _on_sword_timer_timeout() -> void:
 		var sword_explo = big_sword_scene.instantiate()
 		sword_explo.global_position = Vector2(randi_range(0, 1148), randi_range(0, -1500))
 		add_sibling(sword_explo)
+
+
+func _random_atks():
+	pass
+
+func _on_timer_4_timeout() -> void:
+	first_phase = false
+	_random_atks()

@@ -93,7 +93,7 @@ one_shot = true
 autostart = true
 
 [node name="bigAtkOverTimer" type="Timer" parent="."]
-wait_time = 100.0
+wait_time = 95.0
 one_shot = true
 autostart = true
 
@@ -169,6 +169,10 @@ script = ExtResource("8_dp1cd")
 wait_time = 30.0
 autostart = true
 
+[node name="Timer4" type="Timer" parent="."]
+wait_time = 100.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="timeout" from="tpBackTimer" to="." method="_on_tp_back_timer_timeout"]
@@ -181,3 +185,4 @@ autostart = true
 [connection signal="timeout" from="bigAtk1" to="." method="_on_big_atk_1_timeout"]
 [connection signal="timeout" from="canBigAtk1" to="." method="_on_can_big_atk_1_timeout"]
 [connection signal="timeout" from="swordTimer" to="." method="_on_sword_timer_timeout"]
+[connection signal="timeout" from="Timer4" to="." method="_on_timer_4_timeout"]

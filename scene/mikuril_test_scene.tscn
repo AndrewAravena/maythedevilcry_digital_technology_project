@@ -16,7 +16,8 @@ position = Vector2(616, 377)
 metadata/floor = true
 
 [node name="CharacterBody2D" parent="." node_paths=PackedStringArray("big_atk_pos") instance=ExtResource("2_fa7dx")]
-position = Vector2(807, 292)
+position = Vector2(807, 327)
+scale = Vector2(0.640005, 0.519998)
 big_atk_pos = NodePath("../Node2D3")
 
 [node name="player" parent="." instance=ExtResource("3_kdqw7")]

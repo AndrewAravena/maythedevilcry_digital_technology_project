@@ -25,3 +25,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_timer_timeout() -> void:
 	can_move = true
+
+
+func _on_timer_2_timeout() -> void:
+	queue_free()
