@@ -272,10 +272,18 @@ func _on_sword_timer_timeout() -> void:
 		sword_explo.global_position = Vector2(randi_range(0, 1148), randi_range(0, -1500))
 		add_sibling(sword_explo)
 
+func _attack_2():
+	await(get_tree().create_timer(3.0).timeout)
+	_attack_two()
+
+func _attack_3():
+	pass
 
 func _random_atks():
-	var attacks = [_attack_one(), _attack_two(), _attack_three()]
-	attacks[randi_range(0, 2)]
+	var attacks = [_attack_one(),await _attack_2(), _attack_3()]
+	for i in 5:
+		attacks[randi_range(0, 2)]
+		await(get_tree().create_timer(0.25).timeout)
 	
 
 func _on_timer_4_timeout() -> void:
