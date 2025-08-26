@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-class_name mikuril_class
 
 @export var homing_bullet_scene : PackedScene
 @export var homing_bullet_spawn : Node
@@ -29,7 +28,6 @@ var can_activate_big_atk_1 = true
 var big_atk_2 = true
 var first_phase = true
 
-
 @onready var old_pos = self.global_position
 
 
@@ -47,7 +45,6 @@ func _ready() -> void:
 	$bulletHellMode/pos6.look_at($bulletHellMode/pos6/direc6.global_position)
 	$bulletHellMode/pos7.look_at($bulletHellMode/pos7/direc7.global_position)
 	$bulletHellMode/pos8.look_at($bulletHellMode/pos8/direc8.global_position)
-	
 	# var player_pos = player.global_position
 	# _tp(player_pos)
 
@@ -75,7 +72,7 @@ func _process(delta: float) -> void:
 
 
 
-func _attack_one(): # homing bullet triple shot
+func _attack_one(): ## homing bullet triple shot
 	var homing_bullet = homing_bullet_scene.instantiate()
 	homing_bullet.global_position = homing_bullet_spawn.global_position
 	if can_shoot_homing_bullet == true:
@@ -85,7 +82,7 @@ func _attack_one(): # homing bullet triple shot
 		$Timer.start()
 		homing_bullets_shot += 1
 
-func _attack_two(): # tp slash atk
+func _attack_two(): ## tp slash atk
 	var player_pos = player.global_position # find player
 	if ready_to_tp == true:
 		_tp(player_pos) # tp to player
@@ -100,7 +97,7 @@ func _tp(player_pos):
 	ready_to_tp = false
 	
 
-func _attack_three(): # delay homing bullet
+func _attack_three(): ## delay homing bullet
 	var delay_homing_bullet = delay_homing_bullet_scene.instantiate()
 	delay_homing_bullet.global_position = homing_bullet_spawn.global_position
 	if can_shoot_delay_bullet == true:
@@ -277,8 +274,15 @@ func _on_sword_timer_timeout() -> void:
 
 
 func _random_atks():
-	pass
+	var attacks = [_attack_one(), _attack_two(), _attack_three()]
+	attacks[randi_range(0, 2)]
+	
 
 func _on_timer_4_timeout() -> void:
 	first_phase = false
+	_random_atks()
+	$Timer5.start()
+
+
+func _on_timer_5_timeout() -> void:
 	_random_atks()
