@@ -10,12 +10,11 @@ class_name player_class
 @onready var sword_jump_timer: Timer = $boxhit/Sword_Jump_Timer
 
 @export_category("Movement variable")
-@export var speed = 200
-
-@export var gravity = 500.0
+var speed = 200
+var gravity = 500.0
 @export_range(0.0, 1.0) var friction = 0.8
 @export_range(0.0 , 1.0) var acceleration = 0.4
-@export var sword_jump_strongy = 50
+@export var sword_jump_strongy = 100
 
 @export_category("Jump variable")
 @export var JUMP_VELOCITY = -200.0
@@ -33,7 +32,13 @@ var current_equipped_int: int = 0
 var min_wepons: int = 0
 var max_wepons: int = 2
 
-
+var weapons_damage = {
+	"scythe" : 350,
+	"sword": 150, 
+	"gun": 200
+	
+}
+@export var orbs_amount := 1 
 
 var horns: int = 5
 
@@ -43,7 +48,7 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta):
-	
+
 	
 	
 	if not is_on_floor() and not is_dashing:
@@ -83,17 +88,18 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	weapon_equipped()
+	
+	
+	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT :
 		if event.is_pressed():
 			if event.double_click:
+				_animated_sprite.animation_finished
 				_animated_sprite.play(current_equipped + "_second")
 			else :
 				attack()
-	
-	
-	
 	
 func _animation_play():
 	if attacking == true:
@@ -101,7 +107,6 @@ func _animation_play():
 		_animated_sprite.play("walking")
 
 func attack():
-	
 	attacking = true
 	_animated_sprite.stop()
 	_animated_sprite.play(current_equipped)
@@ -116,13 +121,11 @@ func _on_touchy_touch_death(body):
 func jump_logic():
 	if is_on_floor():
 		jump_ammount = 2
-		
 		if Input.is_action_just_pressed("Jump"):
 			jump_ammount -= 1
-			
 			velocity.y = JUMP_VELOCITY
 			dash_ready = true
-			print(velocity.x)
+			
 	if not is_on_floor():
 		if jump_ammount > 0:
 			if Input.is_action_just_pressed("Jump"):
@@ -131,10 +134,6 @@ func jump_logic():
 				velocity.y = JUMP_VELOCITY
 				await _animated_sprite.animation_finished
 				_animated_sprite.play("walking")
-				
-				
-				
-			
 			if Input.is_action_just_released("Jump"):
 				velocity.y = lerp(velocity.y, gravity, 0.02)
 				velocity.y *= 0.3
@@ -152,10 +151,6 @@ func sword_jump_logic():
 		if len(bodies)>0:
 			velocity.y-= sword_jump_strongy
 
-func _on_swordhit_area_entered(area: Area2D) -> void:
-	if area.is_in_group("hitbox"):
-		area.take_damage
-
 func weapon_animation():
 	_animated_sprite.play(attack_weapon)
 
@@ -172,13 +167,16 @@ func weapon_equipped():
 		else:
 			current_equipped_int -= 1
 	current_equipped = weapon_select[current_equipped_int]
+	attack_weapon = current_equipped
 	
 
 
 func weapon_body_entered(body: Node2D) -> void:
 	if attacking :
 		if body is Enemy:
-			body.take_damage()
+			print("hit enememgf")
+			body.take_damage(damage_calculations())
+			
 			
 			
 			
@@ -202,6 +200,8 @@ func take_damage(body: Node2D) -> void:
 func update_hp_bar():
 	horns_hp_bar.set_hp(horns)
 
-			
-
-			
+func damage_calculations():
+	
+	return ((weapons_damage[current_equipped])*orbs_amount) 
+	
+		
