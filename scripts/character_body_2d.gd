@@ -1,9 +1,8 @@
 extends CharacterBody2D
-
-
 class_name Enemy
 
-const speed = 400
+var target = null
+const speed = 4000
 var is_enemy_chase: bool
 var enemy_tier := 1
 var enemy_level_dif := 0.5
@@ -27,9 +26,13 @@ func _process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		velocity.x = 0
+	
+	
+	
 	move(delta)
-	
-	
+	if target:
+		look_at(target.position)
+		position = lerp(position, target.position , delta * 1 ) 
 	
 	move_and_slide()
 func move(delta):
@@ -61,3 +64,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("weapon"):
 		take_damage(area.get_parent().get_parent().damage_calculations())
 	
+
+
+func _detected(body: Node2D) -> void:
+	if body.is_in_group("player") :
+		target = body

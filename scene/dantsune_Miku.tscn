@@ -562,5 +562,5 @@ debug_color = Color(0.979246, 0, 0.389617, 0.42)
 
 [node name="attack_long_range" type="Timer" parent="."]
 
-[connection signal="area_entered" from="Node2D/sword" to="." method="weapon_body_entered"]
-[connection signal="body_entered" from="player_hitbox" to="." method="take_damage"]
+[connection signal="body_entered" from="Node2D/sword" to="." method="weapon_body_entered"]
+[connection signal="area_entered" from="player_hitbox" to="." method="_damage_recieved"]
