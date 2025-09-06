@@ -8,12 +8,11 @@ extends CharacterBody2D
 @onready var sword_jump_timer: Timer = $boxhit/Sword_Jump_Timer
 
 @export_category("Movement variable")
-@export var speed = 200
-
-@export var gravity = 500.0
+var speed = 200
+var gravity = 500.0
 @export_range(0.0, 1.0) var friction = 0.8
 @export_range(0.0 , 1.0) var acceleration = 0.4
-@export var sword_jump_strongy = 50
+@export var sword_jump_strongy = 100
 
 @export_category("Jump variable")
 @export var JUMP_VELOCITY = -200.0
@@ -100,16 +99,12 @@ func _input(event: InputEvent) -> void:
 			else :
 				attack()
 	
-	
-	
-	
 func _animation_play():
 	if attacking == true:
 		await _animated_sprite.animation_finished
 		_animated_sprite.play("walking")
 
 func attack():
-	
 	attacking = true
 	_animated_sprite.stop()
 	_animated_sprite.play(current_equipped)
@@ -124,10 +119,8 @@ func _on_touchy_touch_death(body):
 func jump_logic():
 	if is_on_floor():
 		jump_ammount = 2
-		
 		if Input.is_action_just_pressed("Jump"):
 			jump_ammount -= 1
-			
 			velocity.y = JUMP_VELOCITY
 			dash_ready = true
 			
@@ -139,10 +132,6 @@ func jump_logic():
 				velocity.y = JUMP_VELOCITY
 				await _animated_sprite.animation_finished
 				_animated_sprite.play("walking")
-				
-				
-				
-			
 			if Input.is_action_just_released("Jump"):
 				velocity.y = lerp(velocity.y, gravity, 0.02)
 				velocity.y *= 0.3

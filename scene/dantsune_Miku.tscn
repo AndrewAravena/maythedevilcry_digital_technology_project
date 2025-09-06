@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://ce3ovso7snblc"]
 
-[ext_resource type="Script" uid="uid://kp5y0exxhxra" path="res://scripts/dantsune_miku.gd" id="1_sxhap"]
+[ext_resource type="Script" path="res://scripts/dantsune_miku.gd" id="1_sxhap"]
 [ext_resource type="Texture2D" uid="uid://birtl0416amk7" path="res://assets/Sprite_sheet_dantsune.png" id="2_1yadk"]
 
 [sub_resource type="Animation" id="Animation_kfexg"]
@@ -455,26 +455,26 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pfdxx"]
 _data = {
-&"RESET": SubResource("Animation_kfexg"),
-&"dash": SubResource("Animation_0jes2"),
-&"double jump": SubResource("Animation_1yadk"),
-&"gun": SubResource("Animation_2lurm"),
-&"idle": SubResource("Animation_kvlcr"),
-&"scythe": SubResource("Animation_cigwe"),
-&"scythe_second": SubResource("Animation_gv3ht"),
-&"sword": SubResource("Animation_56ii2"),
-&"sword jumpp": SubResource("Animation_pfdxx"),
-&"sword_second": SubResource("Animation_qix1v"),
-&"walking": SubResource("Animation_8vg5b")
+"RESET": SubResource("Animation_kfexg"),
+"dash": SubResource("Animation_0jes2"),
+"double jump": SubResource("Animation_1yadk"),
+"gun": SubResource("Animation_2lurm"),
+"idle": SubResource("Animation_kvlcr"),
+"scythe": SubResource("Animation_cigwe"),
+"scythe_second": SubResource("Animation_gv3ht"),
+"sword": SubResource("Animation_56ii2"),
+"sword jumpp": SubResource("Animation_pfdxx"),
+"sword_second": SubResource("Animation_qix1v"),
+"walking": SubResource("Animation_8vg5b")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kfexg"]
 radius = 6.0
-height = 32.0
+height = 28.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sxhap"]
 radius = 7.0
-height = 32.0
+height = 24.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_sxhap")
@@ -503,13 +503,13 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["player"]]
 libraries = {
-&"": SubResource("AnimationLibrary_pfdxx")
+"": SubResource("AnimationLibrary_pfdxx")
 }
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="idle" type="Sprite2D" parent="Node2D"]
-position = Vector2(-3, 0)
+position = Vector2(-3, -2)
 texture = ExtResource("2_1yadk")
 hframes = 26
 vframes = 9
