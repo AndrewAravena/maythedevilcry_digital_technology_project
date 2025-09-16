@@ -173,7 +173,7 @@ func weapon_equipped():
 
 func weapon_body_entered(body: Node2D) -> void:
 	if attacking :
-		if body is Enemy:
+		if body is Enemy or body is boss:
 			print("hit enememgf")
 			body.take_damage(damage_calculations())
 			

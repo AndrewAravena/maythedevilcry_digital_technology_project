@@ -36,6 +36,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is player_class:
 		queue_free()
 		print("hit")
+		body.take_damage()
 	# elif body.has_meta("floor"):
 		# queue_free()
 

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+class_name boss
 
 @export var homing_bullet_scene : PackedScene
 @export var homing_bullet_spawn : Node
@@ -27,6 +28,7 @@ var big_atk_1 = true
 var can_activate_big_atk_1 = true
 var big_atk_2 = true
 var first_phase = true
+var hp = 50
 
 @onready var old_pos = self.global_position
 
@@ -50,7 +52,9 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
+
 	if first_phase == true:
 		if big_atk_active == false:
 			player = get_tree().get_first_node_in_group("player")
@@ -176,12 +180,14 @@ func _big_attack(): # big bullet hell attack
 		# if can_activate_big_atk_1 == true:
 			# $bigAtk1.start()
 	if big_atk_2 == true and big_atk_1 == false:
+		@warning_ignore("unused_variable")
 		var direction = 0.0
 		var bullet_count = 5
 		var b_spawn_speed = 0.5
 		for x in 3:
 			for o in bullet_count:
 				var bullet_bang = fast_bullet_scene.instantiate()
+				@warning_ignore("integer_division")
 				direction = o * (360/bullet_count) + $rotateBulletSpawn.rotation_degrees
 				bullet_bang.rotation_degrees = randi_range(0, 185)
 				bullet_bang.global_position = $bulletHellMode/pos4.global_position
@@ -282,6 +288,7 @@ func _attack_3():
 func _random_atks():
 	var attacks = [_attack_one(),await _attack_2(), _attack_3()]
 	for i in 5:
+		@warning_ignore("standalone_expression")
 		attacks[randi_range(0, 2)]
 		await(get_tree().create_timer(0.25).timeout)
 	
@@ -294,3 +301,10 @@ func _on_timer_4_timeout() -> void:
 
 func _on_timer_5_timeout() -> void:
 	_random_atks()
+
+
+func take_damage(damage_recieved):
+	hp -= damage_recieved
+	print("hit boss")
+	if hp <= 0:
+		queue_free()
