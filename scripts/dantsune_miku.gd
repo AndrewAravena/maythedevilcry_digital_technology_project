@@ -170,30 +170,15 @@ func weapon_equipped():
 
 
 func weapon_body_entered(body: Node2D) -> void:
+
 	if attacking :
 		if body is Enemy:
-			print("hit enememgf")
+			
 			body.take_damage(damage_calculations())
 			
-			
-			
-			
-			
-
-
-func take_damage(body: Node2D) -> void:
-	if body is Enemy:
-		horns -= body.damage_to_deal
-		horns = max(horns, 0)
-		update_hp_bar()
-	if horns <= 0:
-		get_tree().reload_current_scene()
-		queue_free()
-			
-	if body is not Enemy and collision_layer == 3 :
-		horns -= 1
-		horns = max(horns, 0 )
-		update_hp_bar()
+	
+	
+		
 	
 func update_hp_bar():
 	horns_hp_bar.set_hp(horns)
@@ -203,3 +188,20 @@ func damage_calculations():
 	return ((weapons_damage[current_equipped])*orbs_amount) 
 	
 		
+
+
+func _damage_recieved(area: Area2D) -> void:
+	var parent = area.get_parent()
+	
+	if parent is Enemy:
+		horns -= parent.damage_to_deal
+		horns = max(horns, 0)
+		update_hp_bar()
+	if horns <= 0:
+		get_tree().reload_current_scene()
+		queue_free()
+			
+	if parent is not Enemy and collision_layer == 3 :
+		horns -= 1
+		horns = max(horns, 0 )
+		update_hp_bar()
