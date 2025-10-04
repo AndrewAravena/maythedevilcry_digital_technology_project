@@ -170,29 +170,17 @@ func weapon_equipped():
 
 
 func weapon_body_entered(body: Node2D) -> void:
-
 	if attacking :
 		if body is Enemy:
-			
 			body.take_damage(damage_calculations())
-			
-	
-	
-		
-	
 func update_hp_bar():
 	horns_hp_bar.set_hp(horns)
 
 func damage_calculations():
-	
 	return ((weapons_damage[current_equipped])*orbs_amount) 
 	
-		
-
-
 func _damage_recieved(area: Area2D) -> void:
 	var parent = area.get_parent()
-	
 	if parent is Enemy:
 		horns -= parent.damage_to_deal
 		horns = max(horns, 0)
