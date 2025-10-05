@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://tpiy3md5rri0"]
+
+[ext_resource type="Script" uid="uid://b0xyhkqkg4ayb" path="res://scene/main_menu.gd" id="1_3ie1t"]
+[ext_resource type="Texture2D" uid="uid://c6c7s0qodncam" path="res://assets/main - options-Sheet.png" id="2_tavrr"]
+[ext_resource type="Theme" uid="uid://bgg1rfxu8cgb0" path="res://scripts/SSize.tres" id="3_s6fee"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcij6"]
+atlas = ExtResource("2_tavrr")
+region = Rect2(0, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t24y0"]
+atlas = ExtResource("2_tavrr")
+region = Rect2(480, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr8p8"]
+atlas = ExtResource("2_tavrr")
+region = Rect2(960, 0, 480, 270)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i2fxn"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcij6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t24y0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr8p8")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3ie1t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(575.5, 321)
+scale = Vector2(2.3979168, 2.3851852)
+sprite_frames = SubResource("SpriteFrames_i2fxn")
+animation = &"new_animation"
+frame_progress = 0.9634975
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 317.0
+offset_bottom = 643.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Play" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_s6fee")
+text = "Play"
+
+[node name="Opition" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_s6fee")
+text = "Options"
+
+[node name="Quit" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_s6fee")
+text = "Quit
+"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Opition" to="." method="_on_opition_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

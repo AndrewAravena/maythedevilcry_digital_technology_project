@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpgteoxw3nho1"]
+
+[ext_resource type="Script" uid="uid://t4004g8nnkpf" path="res://scripts/options.gd" id="1_yvpid"]
+[ext_resource type="Theme" uid="uid://bke56svp5tocc" path="res://scripts/Nothingisrealbuttonm.tres" id="2_e5dg2"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yvpid")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 650.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 282.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Nothings real" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_e5dg2")
+text = "Nothing is real
+ everything is a hoax "
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Nothings real" to="." method="_on_nothings_real_pressed"]

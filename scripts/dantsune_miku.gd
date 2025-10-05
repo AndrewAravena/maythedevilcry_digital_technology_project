@@ -2,23 +2,22 @@ extends CharacterBody2D
 
 @export var horns_hp_bar_path: NodePath
 @onready var horns_hp_bar = get_node(horns_hp_bar_path)
-
 @onready var _animated_sprite = $AnimationPlayer
 @onready var sword_jump = $boxhit
 @onready var sword_jump_timer: Timer = $boxhit/Sword_Jump_Timer
-
 @export_category("Movement variable")
+
+
 var speed = 200
 var gravity = 500.0
 @export_range(0.0, 1.0) var friction = 0.8
 @export_range(0.0 , 1.0) var acceleration = 0.4
-@export var sword_jump_strongy = 100
-
+@export var sword_jump_strongy = 50
 @export_category("Jump variable")
-@export var JUMP_VELOCITY = -200.0
+
+@export var JUMP_VELOCITY = 15.0
 var dash_ready : bool = false
 var is_dashing = false
-@export var jump_speed = -150.0
 @export var jump_ammount = 2
 @export var accel = 290.0
 
@@ -38,22 +37,17 @@ var weapons_damage = {
 }
 @export var orbs_amount := 1 
 
-var horns: int = 5
+var horns: int = 10
 
 
 
 func _ready() -> void:
-	pass
+	_animated_sprite.play("idle")
 
 func _physics_process(delta):
-
-	
-	
 	if not is_on_floor() and not is_dashing:
 		velocity.y += gravity * delta
 	jump_logic()
-	
-	
 	_animation_play()
 	
 	var dir = Input.get_axis("left", "right")
@@ -61,21 +55,18 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, dir * speed, acceleration)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, friction)
-
+		
 	if Input.is_action_pressed("left"):
 		$Node2D.scale.x = -1
-		
 	if Input.is_action_pressed("right"):
 		$Node2D.scale.x = 1
-
+		
 	if Input.is_action_just_pressed("dash")and dash_ready == true :
 		dash_ready = false
 		is_dashing = true
 		if is_dashing == true:
 			_animated_sprite.play("dash")
 		$dashTimer.start()
-		
-	
 	if is_dashing:
 		velocity.y = 0
 		velocity.x += 100 *dir
@@ -84,18 +75,14 @@ func _physics_process(delta):
 	
 	sword_jump_logic()
 	move_and_slide()
-	
 	weapon_equipped()
-	
-	
-	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT :
 		if event.is_pressed():
-			if event.double_click:
-				_animated_sprite.animation_finished
+			if event.double_click:	
 				_animated_sprite.play(current_equipped + "_second")
+				attacking = true
 			else :
 				attack()
 	
@@ -121,7 +108,8 @@ func jump_logic():
 		jump_ammount = 2
 		if Input.is_action_just_pressed("Jump"):
 			jump_ammount -= 1
-			velocity.y = JUMP_VELOCITY
+			velocity.y = -lerp(gravity, JUMP_VELOCITY, 0.4 )
+			
 			dash_ready = true
 			
 	if not is_on_floor():
@@ -129,12 +117,14 @@ func jump_logic():
 			if Input.is_action_just_pressed("Jump"):
 				jump_ammount -= 1
 				_animated_sprite.play("double jump")
-				velocity.y = JUMP_VELOCITY
+				velocity.y = -lerp(JUMP_VELOCITY, gravity , 0.4)
 				await _animated_sprite.animation_finished
 				_animated_sprite.play("walking")
+				
 			if Input.is_action_just_released("Jump"):
 				velocity.y = lerp(velocity.y, gravity, 0.02)
 				velocity.y *= 0.3
+				
 	else:
 		return
 
@@ -146,8 +136,10 @@ func sword_jump_logic():
 		_animated_sprite.play("walking")
 	if not sword_jump_timer.is_stopped():
 		var bodies = sword_jump.get_overlapping_bodies()
+		attacking = true
 		if len(bodies)>0:
-			velocity.y-= sword_jump_strongy
+			velocity.y = -lerp( JUMP_VELOCITY, gravity, 0.4 )
+			velocity.y += sword_jump_strongy
 
 func weapon_animation():
 	_animated_sprite.play(attack_weapon)
@@ -158,12 +150,12 @@ func weapon_equipped():
 		if current_equipped_int == max_wepons:
 			current_equipped_int = min_wepons
 		else:
-			current_equipped_int +=1
+			current_equipped_int += next
 	if Input.is_action_just_pressed("last weapon"):
 		if current_equipped_int == min_wepons:
 			current_equipped_int = max_wepons
 		else:
-			current_equipped_int -= 1
+			current_equipped_int -= next
 	current_equipped = weapon_select[current_equipped_int]
 	attack_weapon = current_equipped
 	
