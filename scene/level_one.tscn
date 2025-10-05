@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cu8log8udt0jh"]
+[gd_scene load_steps=18 format=3 uid="uid://cu8log8udt0jh"]
 
 [ext_resource type="PackedScene" uid="uid://8injipo77lnl" path="res://scene/placeholder.tscn" id="1_ba3bs"]
 [ext_resource type="Script" uid="uid://dc7ov4ttynk03" path="res://scene/level_one.gd" id="2_00jp6"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://cmk7asj2fqvdh" path="res://scene/rocky.tscn" id="9_nbn0e"]
 [ext_resource type="Texture2D" uid="uid://bfgn5xry63nvn" path="res://assets/Background/Top Layer.png" id="10_ibnef"]
 [ext_resource type="Texture2D" uid="uid://bl547yke3eru" path="res://assets/Background/sewer-background.png" id="11_4miyp"]
+[ext_resource type="PackedScene" uid="uid://n06lmv4u3igo" path="res://scene/mikuril/mikuril.tscn" id="13_bnim7"]
+[ext_resource type="Script" uid="uid://qq445fcff3ew" path="res://scene/bossactive.gd" id="13_g08gr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ibnef"]
 texture = ExtResource("8_ibnef")
@@ -446,6 +448,9 @@ physics_layer_1/collision_layer = 2
 physics_layer_1/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_ibnef")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujm3m"]
+size = Vector2(1762.5, 692)
+
 [node name="Node2D" instance=ExtResource("1_ba3bs")]
 script = ExtResource("2_00jp6")
 
@@ -605,7 +610,7 @@ texture = ExtResource("10_ibnef")
 
 [node name="TopLayer3" type="Sprite2D" parent="TopLayer/TopLayer5" index="1"]
 z_index = -9
-position = Vector2(4642.5205, -383.58868)
+position = Vector2(3858.3652, -284.01257)
 scale = Vector2(1.2442377, 1.9725001)
 texture = ExtResource("10_ibnef")
 
@@ -671,3 +676,24 @@ texture = ExtResource("11_4miyp")
 [node name="SewerBackground3" type="Sprite2D" parent="SewerBackground/SewerBackground4/SewerBackground4" index="2"]
 position = Vector2(4775, -10)
 texture = ExtResource("11_4miyp")
+
+[node name="Node2D3" type="Node2D" parent="." index="8" groups=["bigAtkPos"]]
+position = Vector2(-3171, 1848)
+
+[node name="Node2D" type="Node2D" parent="." index="9" groups=["delay"]]
+position = Vector2(-2397, 1601)
+
+[node name="CharacterBody2D2" parent="." index="10" node_paths=PackedStringArray("big_atk_pos") groups=["boss"] instance=ExtResource("13_bnim7")]
+position = Vector2(-2303.0002, 1996.0001)
+scale = Vector2(0.5057032, 0.52)
+big_atk_pos = NodePath("../Node2D3")
+
+[node name="bossactive" type="Area2D" parent="." index="11"]
+script = ExtResource("13_g08gr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bossactive" index="0"]
+position = Vector2(-3124.25, 1705)
+shape = SubResource("RectangleShape2D_ujm3m")
+
+[connection signal="area_entered" from="bossactive" to="bossactive" method="_on_area_entered"]
+[connection signal="body_entered" from="bossactive" to="bossactive" method="_on_body_entered"]
