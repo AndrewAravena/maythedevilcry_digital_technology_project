@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cmk7asj2fqvdh"]
 
 [ext_resource type="Texture2D" uid="uid://b58wh1sqrdxj" path="res://assets/rocky_scared-Sheet.png" id="1_20xn0"]
-[ext_resource type="Script" uid="uid://cuj8gu2hk410s" path="res://sprite_2d.gd" id="2_6dt73"]
+[ext_resource type="Script" uid="uid://cuj8gu2hk410s" path="res://scripts/sprite_2d.gd" id="2_6dt73"]
 
 [sub_resource type="Animation" id="Animation_kqf5o"]
 length = 0.001
