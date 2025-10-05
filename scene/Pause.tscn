@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://cp6k4csq3qe78"]
+
+[ext_resource type="Script" uid="uid://b4httjqyq67t2" path="res://scripts/control.gd" id="1_lg454"]
+[ext_resource type="Texture2D" uid="uid://bye0723y6acjh" path="res://assets/pause - options-Sheet.png" id="2_2jkrm"]
+[ext_resource type="Theme" uid="uid://d3mlg0nqln08k" path="res://scripts/Pause.tres" id="3_lg454"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7jby"]
+atlas = ExtResource("2_2jkrm")
+region = Rect2(0, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igaod"]
+atlas = ExtResource("2_2jkrm")
+region = Rect2(480, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj04q"]
+atlas = ExtResource("2_2jkrm")
+region = Rect2(960, 0, 480, 270)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wqglo"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7jby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igaod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj04q")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
+z_index = 100
+layout_mode = 3
+anchor_right = 0.535
+anchor_bottom = 0.5
+offset_top = -1.0
+offset_right = -0.32000732
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lg454")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(320, 163)
+scale = Vector2(1.368, 1.23)
+sprite_frames = SubResource("SpriteFrames_wqglo")
+animation = &"new_animation"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 585.0
+offset_bottom = 449.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_lg454")
+text = "Resume"
+
+[node name="Options" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_lg454")
+text = "Options
+"
+
+[node name="Quit" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_lg454")
+text = "Quit
+"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
