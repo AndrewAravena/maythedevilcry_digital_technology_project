@@ -14,10 +14,9 @@ platform = ExtResource("2_kdqw7")
 position = Vector2(616, 377)
 metadata/floor = true
 
-[node name="CharacterBody2D" parent="." node_paths=PackedStringArray("big_atk_pos") instance=ExtResource("2_fa7dx")]
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_fa7dx")]
 position = Vector2(807, 327)
 scale = Vector2(0.640005, 0.519998)
-big_atk_pos = NodePath("../Node2D3")
 
 [node name="player" parent="." instance=ExtResource("3_kdqw7")]
 position = Vector2(295, 316)
@@ -28,7 +27,7 @@ position = Vector2(807, 292)
 [node name="Node2D2" type="Node2D" parent="." groups=["delay"]]
 position = Vector2(809, 63)
 
-[node name="Node2D3" type="Node2D" parent="."]
+[node name="Node2D3" type="Node2D" parent="." groups=["bigAtkPos"]]
 position = Vector2(613, 133)
 
 [node name="Timer" type="Timer" parent="."]

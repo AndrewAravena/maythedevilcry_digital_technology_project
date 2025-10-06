@@ -5,7 +5,7 @@ class_name boss
 @export var homing_bullet_scene : PackedScene
 @export var homing_bullet_spawn : Node
 @export var homing_bullet_rotation : Node
-@export var big_atk_pos : Node
+@onready var big_atk_pos = get_tree().get_first_node_in_group("bigAtkPos")
 @export var base_slash_scene : PackedScene
 @export var delay_homing_bullet_scene : PackedScene
 @export var fast_bullet_scene: PackedScene
