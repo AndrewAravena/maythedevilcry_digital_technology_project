@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b16pxcij2d5st"]
+
+[ext_resource type="Texture2D" uid="uid://bp3sp1ps2477x" path="res://assets/User Interface/Weapon select/Weapon_select.png" id="1_4ebom"]
+[ext_resource type="Script" uid="uid://dvn2a1ahq11q4" path="res://scene/weapon_select.gd" id="1_6p11i"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6p11i")
+
+[node name="WeaponSelect" type="Sprite2D" parent="."]
+position = Vector2(119, 116)
+texture = ExtResource("1_4ebom")
+hframes = 4
+vframes = 4

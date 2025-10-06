@@ -157,5 +157,9 @@ scale = Vector2(2.3125, 0.880208)
 sprite_frames = SubResource("SpriteFrames_jl0n1")
 animation = &"walk"
 
+[node name="Knockback_cooldown" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [connection signal="timeout" from="direction timer" to="." method="_on_direction_timer_timeout"]
 [connection signal="body_entered" from="detect" to="." method="_detected"]
