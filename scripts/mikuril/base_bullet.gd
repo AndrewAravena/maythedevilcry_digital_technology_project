@@ -9,6 +9,9 @@ func _physics_process(delta: float) -> void:
 	# print("real base bullet")
 	velocity = Vector2(1, 0).rotated(rotation) * SPEED
 	
+	if velocity.y == 0 or velocity.x == 0: 
+		queue_free()
+	
 	move_and_slide()
 
 

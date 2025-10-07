@@ -73,7 +73,7 @@ wait_time = 9.5
 one_shot = true
 
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(-73, 0)
+position = Vector2(-64, 0)
 
 [node name="delayHomingTimer" type="Timer" parent="."]
 wait_time = 10.5
@@ -85,7 +85,7 @@ wait_time = 1.8
 autostart = true
 
 [node name="towardPlayer" type="Marker2D" parent="."]
-position = Vector2(-73, 0)
+position = Vector2(-64, 0)
 
 [node name="bigAtkTimer" type="Timer" parent="."]
 wait_time = 30.0
@@ -143,7 +143,7 @@ position = Vector2(56, 85)
 position = Vector2(21, 25)
 
 [node name="pos7" type="Node2D" parent="bulletHellMode"]
-position = Vector2(706, 199)
+position = Vector2(710, 149)
 
 [node name="direc7" type="Node2D" parent="bulletHellMode/pos7"]
 position = Vector2(30, 25)

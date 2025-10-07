@@ -21,7 +21,7 @@ scale = Vector2(0.640005, 0.519998)
 [node name="player" parent="." instance=ExtResource("3_kdqw7")]
 position = Vector2(295, 316)
 
-[node name="Node2D" type="Node2D" parent="." groups=["bigAtkPos"]]
+[node name="Node2D" type="Node2D" parent="."]
 position = Vector2(807, 292)
 
 [node name="Node2D2" type="Node2D" parent="." groups=["delay"]]

@@ -16,3 +16,4 @@ func ini(new_speed : Vector2, colour : String = "default", new_gravity := 0.0):
 func _process(_d) -> void:
 	time += _d
 	linear_velocity = speed + (gravity * time)
+	
