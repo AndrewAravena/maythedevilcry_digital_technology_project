@@ -6,8 +6,8 @@ var player : CharacterBody2D
 @onready var knockback_cooldown: Timer = $Knockback_cooldown
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var target = null
-const speed = 100
-const jump_speed = 0.5
+const speed = 70
+const jump_speed = 0.6
 var is_enemy_chase: bool
 var enemy_tier := 1
 var enemy_level_dif := 1
