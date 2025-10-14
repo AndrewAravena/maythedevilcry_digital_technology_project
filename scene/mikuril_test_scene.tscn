@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c02s4g5emstcn"]
+
+[ext_resource type="Script" uid="uid://cfsa2kq1ft2o1" path="res://scripts/mikuril_test_scene.gd" id="1_fa7dx"]
+[ext_resource type="PackedScene" uid="uid://dlawxjcvcqoua" path="res://scene/testplatform.tscn" id="1_m0kk3"]
+[ext_resource type="PackedScene" uid="uid://n06lmv4u3igo" path="res://scene/mikuril/mikuril.tscn" id="2_fa7dx"]
+[ext_resource type="PackedScene" uid="uid://djkc3kdia26yb" path="res://scene/mikuril/static_body_2d.tscn" id="2_kdqw7"]
+[ext_resource type="PackedScene" uid="uid://ce3ovso7snblc" path="res://scene/dantsune_Miku.tscn" id="3_kdqw7"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_fa7dx")
+platform = ExtResource("2_kdqw7")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("1_m0kk3")]
+position = Vector2(616, 377)
+metadata/floor = true
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_fa7dx")]
+position = Vector2(807, 327)
+scale = Vector2(0.640005, 0.519998)
+
+[node name="player" parent="." instance=ExtResource("3_kdqw7")]
+position = Vector2(295, 316)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(807, 292)
+
+[node name="Node2D2" type="Node2D" parent="." groups=["delay"]]
+position = Vector2(809, 63)
+
+[node name="Node2D3" type="Node2D" parent="." groups=["bigAtkPos"]]
+position = Vector2(613, 133)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfb3nnbx6w117"]
+
+[ext_resource type="Script" uid="uid://b6gwd04ouf28e" path="res://scripts/mikuril/testbullet.gd" id="1_yffbp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fmv7"]
+size = Vector2(43, 17)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_yffbp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = 23.0
+offset_right = 43.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(21.5, 31.5)
+shape = SubResource("RectangleShape2D_0fmv7")
