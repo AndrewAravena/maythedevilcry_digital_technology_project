@@ -1,6 +1,6 @@
 extends Area2D
 
-const speed = 200
+const SPEED = 200
 var direction = Vector2.ZERO
 var can_track = true
 var player: Node
@@ -9,7 +9,6 @@ func _ready() -> void:
 	$queueFreeTimer.start()
 	player = get_tree().get_first_node_in_group("player")
 
-	pass
 func _process(delta: float):
 	if not player == null:
 		if can_track == true:
@@ -18,7 +17,7 @@ func _process(delta: float):
 			
 			can_track = false 
 			$Timer.start()
-		position += direction * speed * delta
+		position += direction * SPEED * delta
 		
 		
 	else:

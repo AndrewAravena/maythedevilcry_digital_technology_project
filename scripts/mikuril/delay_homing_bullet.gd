@@ -5,7 +5,7 @@ var first_pos: Node
 var can_track = false
 var direction = Vector2.ZERO
 var go_to_ini_pos = true
-const speed = 200
+const SPEED = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 		if can_track == false and go_to_ini_pos == true:
 			direction = (first_pos.global_position - global_position).normalized()
 			rotation = direction.angle()
-		position += direction * speed * delta
+		position += direction * SPEED * delta
 	else:
 		print("did not find player")
 

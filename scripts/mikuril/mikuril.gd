@@ -99,7 +99,6 @@ func _tp(player_pos):
 	self.global_position = player_pos + Vector2(50, 0)
 	$tpBackTimer.start()
 	ready_to_tp = false
-	
 
 func _attack_three(): ## delay homing bullet
 	var delay_homing_bullet = delay_homing_bullet_scene.instantiate()
@@ -122,11 +121,6 @@ func _attack_four(): # constant bullet
 func _big_attack(): # big bullet hell attack
 	self.global_position = big_atk_pos.global_position
 	if big_atk_1 == true:
-		
-		
-		
-		
-		
 		for a in 2:
 			var bullet_hell_bullet0 = delay_fast_bullet.instantiate()
 			bullet_hell_bullet0.global_position = $bulletHellMode/pos.global_position
@@ -174,7 +168,6 @@ func _big_attack(): # big bullet hell attack
 			add_sibling(bullet_hell_bullet8)
 			print("worky")
 			await(get_tree().create_timer(2.5).timeout)
-		
 		big_atk_1 = false
 		# $canBigAtk1.start()
 		# if can_activate_big_atk_1 == true:
