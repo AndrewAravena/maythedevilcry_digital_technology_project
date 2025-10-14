@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cu8log8udt0jh"]
 
 [ext_resource type="PackedScene" uid="uid://8injipo77lnl" path="res://scene/placeholder.tscn" id="1_ba3bs"]
-[ext_resource type="Script" uid="uid://dc7ov4ttynk03" path="res://scene/level_one.gd" id="2_00jp6"]
+[ext_resource type="Script" path="res://scene/level_one.gd" id="2_00jp6"]
 [ext_resource type="PackedScene" uid="uid://cp6k4csq3qe78" path="res://scene/Pause.tscn" id="2_nbn0e"]
 [ext_resource type="PackedScene" uid="uid://ce3ovso7snblc" path="res://scene/dantsune_Miku.tscn" id="3_kd301"]
 [ext_resource type="PackedScene" uid="uid://cpu76c680vtxu" path="res://scene/enemy.tscn" id="4_swhd1"]
@@ -300,9 +300,9 @@ texture = ExtResource("8_ibnef")
 18:7/0 = 0
 19:7/0 = 0
 0:8/0 = 0
-0:8/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+0:8/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 1:8/0 = 0
-1:8/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+1:8/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 2:8/0 = 0
 3:8/0 = 0
 4:8/0 = 0
@@ -320,9 +320,9 @@ texture = ExtResource("8_ibnef")
 13:8/0 = 0
 13:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:9/0 = 0
-0:9/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+0:9/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 1:9/0 = 0
-1:9/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+1:9/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 2:9/0 = 0
 3:9/0 = 0
 4:9/0 = 0
@@ -412,33 +412,33 @@ texture = ExtResource("8_ibnef")
 0:15/0 = 0
 1:15/0 = 0
 1:18/0 = 0
-1:18/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+1:18/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 1:19/0 = 0
-1:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+1:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 3:19/0 = 0
-3:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+3:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 4:19/0 = 0
-4:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+4:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 8:18/0 = 0
-8:18/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+8:18/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 8:19/0 = 0
-8:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+8:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 8:20/0 = 0
-8:20/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+8:20/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 9:20/0 = 0
-9:20/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+9:20/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 9:19/0 = 0
-9:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+9:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 9:18/0 = 0
-9:18/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+9:18/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 10:18/0 = 0
-10:18/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+10:18/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 10:19/0 = 0
-10:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+10:19/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 10:20/0 = 0
-10:20/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+10:20/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 8:21/0 = 0
-8:21/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.5971737, 8, 8, 8, 8, -8, 0.17985916, -8)
+8:21/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 3.59717, 8, 8, 8, 8, -8, 0.179859, -8)
 
 [sub_resource type="TileSet" id="TileSet_4miyp"]
 physics_layer_0/collision_layer = 1
@@ -462,6 +462,7 @@ offset_left = -290.0
 offset_top = -164.0
 offset_right = -290.0
 offset_bottom = -164.0
+script = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="1"]
 
@@ -564,61 +565,61 @@ position = Vector2(-68, 1704)
 [node name="TopLayer" type="Sprite2D" parent="." index="6"]
 z_index = -9
 position = Vector2(-571, 47)
-scale = Vector2(0.47861928, 0.50835705)
+scale = Vector2(0.478619, 0.508357)
 texture = ExtResource("10_ibnef")
 
 [node name="TopLayer2" type="Sprite2D" parent="TopLayer" index="0"]
 z_index = -9
-position = Vector2(3012.8328, -84.58623)
-scale = Vector2(0.8450705, 1.2004565)
+position = Vector2(3012.83, -84.5862)
+scale = Vector2(0.84507, 1.20046)
 texture = ExtResource("10_ibnef")
 
 [node name="TopLayer3" type="Sprite2D" parent="TopLayer" index="1"]
 z_index = -9
-position = Vector2(4642.5205, -383.58868)
-scale = Vector2(1.2442377, 1.9725001)
+position = Vector2(4642.52, -383.589)
+scale = Vector2(1.24424, 1.9725)
 texture = ExtResource("10_ibnef")
 
 [node name="TopLayer" type="Sprite2D" parent="TopLayer" index="2"]
 z_index = -9
-position = Vector2(1575.3649, -110.1588)
-scale = Vector2(0.9762499, 1.3687499)
+position = Vector2(1575.36, -110.159)
+scale = Vector2(0.97625, 1.36875)
 texture = ExtResource("10_ibnef")
 
 [node name="TopLayer4" type="Sprite2D" parent="TopLayer" index="3"]
 z_index = -9
-position = Vector2(-1477.165, -45.243805)
-scale = Vector2(0.8450703, 1.2004564)
+position = Vector2(-1477.17, -45.2438)
+scale = Vector2(0.84507, 1.20046)
 texture = ExtResource("10_ibnef")
 
 [node name="TopLayer5" type="Sprite2D" parent="TopLayer" index="4"]
 z_index = -9
-position = Vector2(7151.8228, -90.48758)
-scale = Vector2(0.7250819, 1.3090473)
+position = Vector2(7151.82, -90.4876)
+scale = Vector2(0.725082, 1.30905)
 texture = ExtResource("10_ibnef")
 
 [node name="TopLayer2" type="Sprite2D" parent="TopLayer/TopLayer5" index="0"]
 z_index = -9
-position = Vector2(3012.8328, -84.58623)
-scale = Vector2(0.8450705, 1.2004565)
+position = Vector2(3012.83, -84.5862)
+scale = Vector2(0.84507, 1.20046)
 texture = ExtResource("10_ibnef")
 
 [node name="TopLayer3" type="Sprite2D" parent="TopLayer/TopLayer5" index="1"]
 z_index = -9
-position = Vector2(4642.5205, -383.58868)
-scale = Vector2(1.2442377, 1.9725001)
+position = Vector2(4642.52, -383.589)
+scale = Vector2(1.24424, 1.9725)
 texture = ExtResource("10_ibnef")
 
 [node name="TopLayer" type="Sprite2D" parent="TopLayer/TopLayer5" index="2"]
 z_index = -9
-position = Vector2(1575.3649, -110.1588)
-scale = Vector2(0.9762499, 1.3687499)
+position = Vector2(1575.36, -110.159)
+scale = Vector2(0.97625, 1.36875)
 texture = ExtResource("10_ibnef")
 
 [node name="TopLayer4" type="Sprite2D" parent="TopLayer/TopLayer5" index="3"]
 z_index = -9
-position = Vector2(-1477.165, -45.243805)
-scale = Vector2(0.8450703, 1.2004564)
+position = Vector2(-1477.17, -45.2438)
+scale = Vector2(0.84507, 1.20046)
 texture = ExtResource("10_ibnef")
 
 [node name="SewerBackground" type="Sprite2D" parent="." index="7"]

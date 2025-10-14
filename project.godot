@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="MayTheDevilCry"
-run/main_scene="uid://tpiy3md5rri0"
-config/features=PackedStringArray("4.5", "Forward Plus")
+run/main_scene="res://scene/main_Menu.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
