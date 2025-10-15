@@ -56,9 +56,6 @@ func take_damage(damage_recieved):
 	knockback = true
 	health -= damage_recieved * (enemy_tier * enemy_level_dif)
 	animated_sprite_2d.play("Take_Damage")
-	
-	
-
 	if health <= 0:
 		queue_free()
 	await animated_sprite_2d.animation_finished

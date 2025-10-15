@@ -84,25 +84,20 @@ func _input(event: InputEvent) -> void:
 				_animated_sprite.play(current_equipped + "_second")
 				attacking = true
 			else :
-				attack()
-	
+				attack()	
 func _animation_play():
 	if attacking == true:
 		await _animated_sprite.animation_finished
 		_animated_sprite.play("walking")
-
 func attack():
 	attacking = true
 	_animated_sprite.stop()
 	_animated_sprite.play(current_equipped)
 	await _animated_sprite.animation_finished
 	_animated_sprite.stop()
-
-
 func _on_touchy_touch_death(body):
 	if body.has_meta("death"):
 		get_tree().reload_current_scene()
-
 func jump_logic():
 	if is_on_floor():
 		jump_ammount = 2
@@ -127,7 +122,6 @@ func jump_logic():
 				
 	else:
 		return
-
 func sword_jump_logic():
 	if Input.is_action_just_pressed("sword_jump") and sword_jump_timer.is_stopped():
 		sword_jump_timer.start()
@@ -140,10 +134,8 @@ func sword_jump_logic():
 		if len(bodies)>0:
 			velocity.y = -lerp( JUMP_VELOCITY, gravity, 0.4 )
 			velocity.y += sword_jump_strongy
-
 func weapon_animation():
 	_animated_sprite.play(attack_weapon)
-
 func weapon_equipped():
 	var next: int = 1
 	if Input.is_action_just_pressed("next weapon"):
@@ -158,19 +150,14 @@ func weapon_equipped():
 			current_equipped_int -= next
 	current_equipped = weapon_select[current_equipped_int]
 	attack_weapon = current_equipped
-	
-
-
 func weapon_body_entered(body: Node2D) -> void:
 	if attacking :
 		if body is Enemy:
 			body.take_damage(damage_calculations())
 func update_hp_bar():
 	horns_hp_bar.set_hp(horns)
-
 func damage_calculations():
 	return ((weapons_damage[current_equipped])*orbs_amount) 
-	
 func _damage_recieved(area: Area2D) -> void:
 	var parent = area.get_parent()
 	if parent is Enemy:
