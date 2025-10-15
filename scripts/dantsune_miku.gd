@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var _animated_sprite = $AnimationPlayer
 @onready var sword_jump = $boxhit
 @onready var sword_jump_timer: Timer = $boxhit/Sword_Jump_Timer
+@export var weapon_select_path : NodePath
+@onready var waeapon_select = get_node(weapon_select_path)
 @export_category("Movement variable")
 
 
@@ -37,7 +39,7 @@ var weapons_damage = {
 }
 @export var orbs_amount := 1 
 
-var horns: int = 10
+var horns: int = 5
 
 
 

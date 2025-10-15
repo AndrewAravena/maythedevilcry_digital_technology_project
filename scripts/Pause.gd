@@ -9,11 +9,6 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("pause") :
 		visible = not visible
 		get_tree().paused = not get_tree().paused
-		
-	
-	
-
-
 func _on_resume_pressed() -> void:
 	visible = not visible
 	get_tree().paused = false
