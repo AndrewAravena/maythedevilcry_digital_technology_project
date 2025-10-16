@@ -27,7 +27,7 @@ func _ready() -> void:
 	player = get_tree().current_scene.get_player()
 
 func _process(delta: float) -> void:	
-	if !is_on_floor():
+	if not is_on_floor():
 		velocity.y += gravity * delta
 	var heheha =-(position.x - player.position.x)
 	dir = player.position

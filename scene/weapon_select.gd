@@ -1,11 +1,21 @@
 extends Control
-#var attacking := String
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	get_parent()
+@onready var weapon_select: AnimatedSprite2D = $WeaponSelect
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
+		
+		
+	
+func get_weapon(current_equipped, previous_equipped, swap_dir):
+	var dir : String
+	if swap_dir <0:
+		dir = "_decrease"
+	else:
+		dir = "_increase"
+	weapon_select.play( previous_equipped + dir)
+	await weapon_select.animation_finished
+	weapon_select.play(current_equipped)
+	
+	
+	
+	

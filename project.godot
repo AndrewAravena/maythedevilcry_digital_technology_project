@@ -11,13 +11,10 @@ config_version=5
 [application]
 
 config/name="MayTheDevilCry"
-<<<<<<< Updated upstream
 run/main_scene="uid://tpiy3md5rri0"
-=======
-run/main_scene="res://scene/level_one.tscn"
->>>>>>> Stashed changes
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+<<<<<<<Updatedupstreamrun/main_scene="uid://tpiy3md5rri0"
 
 [display]
 

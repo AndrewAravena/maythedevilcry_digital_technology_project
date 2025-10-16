@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cu8log8udt0jh"]
+[gd_scene load_steps=16 format=3 uid="uid://cu8log8udt0jh"]
 
 [ext_resource type="PackedScene" uid="uid://8injipo77lnl" path="res://scene/placeholder.tscn" id="1_ba3bs"]
 [ext_resource type="Script" uid="uid://dc7ov4ttynk03" path="res://scene/level_one.gd" id="2_00jp6"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c6pr65iybq0fs" path="res://scene/blue_orb.tscn" id="9_4miyp"]
 [ext_resource type="PackedScene" uid="uid://cmk7asj2fqvdh" path="res://scene/rocky.tscn" id="9_nbn0e"]
 [ext_resource type="Texture2D" uid="uid://bfgn5xry63nvn" path="res://assets/Background/Top Layer.png" id="10_ibnef"]
+[ext_resource type="Texture2D" uid="uid://bl547yke3eru" path="res://assets/Background/sewer-background.png" id="11_4miyp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ibnef"]
 texture = ExtResource("8_ibnef")
@@ -453,6 +454,13 @@ script = ExtResource("2_00jp6")
 position = Vector2(106, 209)
 horns_hp_bar_path = NodePath("../CanvasLayer/CanvasLayer2")
 weapon_select_path = NodePath("Camera2D/weapon")
+friction = null
+acceleration = null
+sword_jump_strongy = null
+JUMP_VELOCITY = null
+jump_ammount = null
+accel = null
+orbs_amount = null
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" index="2"]
 zoom = Vector2(2, 2)
@@ -567,29 +575,113 @@ position = Vector2(166, 1699)
 [node name="CharacterBody2D23" parent="Node" index="11" instance=ExtResource("4_swhd1")]
 position = Vector2(-68, 1704)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="6"]
-follow_viewport_scale = 2.18
-
-[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground" index="0"]
-scroll_scale = Vector2(0.5, 0.5)
-repeat_times = 100
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D" index="0"]
-position = Vector2(-290, 13.000015)
-scale = Vector2(1.420625, 1.4275)
+[node name="TopLayer" type="Sprite2D" parent="." index="6"]
+z_index = -9
+position = Vector2(-571, 47)
+scale = Vector2(0.47861928, 0.50835705)
 texture = ExtResource("10_ibnef")
 
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Parallax2D" index="1"]
-position = Vector2(1984, 9.536743e-07)
-scale = Vector2(1.420625, 1.4275)
+[node name="TopLayer2" type="Sprite2D" parent="TopLayer" index="0"]
+z_index = -9
+position = Vector2(3012.8328, -84.58623)
+scale = Vector2(0.8450705, 1.2004565)
 texture = ExtResource("10_ibnef")
 
-[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Parallax2D" index="2"]
-position = Vector2(4225, 0)
-scale = Vector2(1.420625, 1.4275)
+[node name="TopLayer3" type="Sprite2D" parent="TopLayer" index="1"]
+z_index = -9
+position = Vector2(4642.5205, -383.58868)
+scale = Vector2(1.2442377, 1.9725001)
 texture = ExtResource("10_ibnef")
 
-[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Parallax2D" index="3"]
-position = Vector2(6076, 0)
-scale = Vector2(1.420625, 1.4275)
+[node name="TopLayer" type="Sprite2D" parent="TopLayer" index="2"]
+z_index = -9
+position = Vector2(1575.3649, -110.1588)
+scale = Vector2(0.9762499, 1.3687499)
 texture = ExtResource("10_ibnef")
+
+[node name="TopLayer4" type="Sprite2D" parent="TopLayer" index="3"]
+z_index = -9
+position = Vector2(-1477.165, -45.243805)
+scale = Vector2(0.8450703, 1.2004564)
+texture = ExtResource("10_ibnef")
+
+[node name="TopLayer5" type="Sprite2D" parent="TopLayer" index="4"]
+z_index = -9
+position = Vector2(7151.8228, -90.48758)
+scale = Vector2(0.7250819, 1.3090473)
+texture = ExtResource("10_ibnef")
+
+[node name="TopLayer2" type="Sprite2D" parent="TopLayer/TopLayer5" index="0"]
+z_index = -9
+position = Vector2(3012.8328, -84.58623)
+scale = Vector2(0.8450705, 1.2004565)
+texture = ExtResource("10_ibnef")
+
+[node name="TopLayer3" type="Sprite2D" parent="TopLayer/TopLayer5" index="1"]
+z_index = -9
+position = Vector2(4642.5205, -383.58868)
+scale = Vector2(1.2442377, 1.9725001)
+texture = ExtResource("10_ibnef")
+
+[node name="TopLayer" type="Sprite2D" parent="TopLayer/TopLayer5" index="2"]
+z_index = -9
+position = Vector2(1575.3649, -110.1588)
+scale = Vector2(0.9762499, 1.3687499)
+texture = ExtResource("10_ibnef")
+
+[node name="TopLayer4" type="Sprite2D" parent="TopLayer/TopLayer5" index="3"]
+z_index = -9
+position = Vector2(-1477.165, -45.243805)
+scale = Vector2(0.8450703, 1.2004564)
+texture = ExtResource("10_ibnef")
+
+[node name="SewerBackground" type="Sprite2D" parent="." index="7"]
+z_index = -1
+position = Vector2(-820, 624)
+texture = ExtResource("11_4miyp")
+
+[node name="SewerBackground" type="Sprite2D" parent="SewerBackground" index="0"]
+position = Vector2(1600, 4)
+texture = ExtResource("11_4miyp")
+
+[node name="SewerBackground2" type="Sprite2D" parent="SewerBackground" index="1"]
+position = Vector2(3188, 1)
+texture = ExtResource("11_4miyp")
+
+[node name="SewerBackground3" type="Sprite2D" parent="SewerBackground" index="2"]
+position = Vector2(4788, -15)
+texture = ExtResource("11_4miyp")
+
+[node name="SewerBackground4" type="Sprite2D" parent="SewerBackground" index="3"]
+z_index = -1
+position = Vector2(-3, 800)
+texture = ExtResource("11_4miyp")
+
+[node name="SewerBackground" type="Sprite2D" parent="SewerBackground/SewerBackground4" index="0"]
+position = Vector2(1600, 4)
+texture = ExtResource("11_4miyp")
+
+[node name="SewerBackground2" type="Sprite2D" parent="SewerBackground/SewerBackground4" index="1"]
+position = Vector2(3190, 0)
+texture = ExtResource("11_4miyp")
+
+[node name="SewerBackground3" type="Sprite2D" parent="SewerBackground/SewerBackground4" index="2"]
+position = Vector2(4785, -16)
+texture = ExtResource("11_4miyp")
+
+[node name="SewerBackground4" type="Sprite2D" parent="SewerBackground/SewerBackground4" index="3"]
+z_index = -1
+position = Vector2(15, 785)
+texture = ExtResource("11_4miyp")
+
+[node name="SewerBackground" type="Sprite2D" parent="SewerBackground/SewerBackground4/SewerBackground4" index="0"]
+position = Vector2(1600, 4)
+texture = ExtResource("11_4miyp")
+
+[node name="SewerBackground2" type="Sprite2D" parent="SewerBackground/SewerBackground4/SewerBackground4" index="1"]
+position = Vector2(3178, 6)
+texture = ExtResource("11_4miyp")
+
+[node name="SewerBackground3" type="Sprite2D" parent="SewerBackground/SewerBackground4/SewerBackground4" index="2"]
+position = Vector2(4775, -10)
+texture = ExtResource("11_4miyp")
