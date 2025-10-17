@@ -571,25 +571,28 @@ position = Vector2(-68, 1704)
 follow_viewport_scale = 2.18
 
 [node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground" index="0"]
+scale = Vector2(1.0068345, 1)
 scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(-99, -390)
 repeat_times = 100
+follow_viewport = false
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D" index="0"]
-position = Vector2(-290, 13.000015)
+position = Vector2(-289.5, 299)
 scale = Vector2(1.420625, 1.4275)
 texture = ExtResource("10_ibnef")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Parallax2D" index="1"]
-position = Vector2(1984, 9.536743e-07)
+position = Vector2(1984.5, 286)
 scale = Vector2(1.420625, 1.4275)
 texture = ExtResource("10_ibnef")
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Parallax2D" index="2"]
-position = Vector2(4225, 0)
+position = Vector2(4225.5, 286)
 scale = Vector2(1.420625, 1.4275)
 texture = ExtResource("10_ibnef")
 
 [node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Parallax2D" index="3"]
-position = Vector2(6076, 0)
+position = Vector2(6076.5, 286)
 scale = Vector2(1.420625, 1.4275)
 texture = ExtResource("10_ibnef")

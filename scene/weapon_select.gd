@@ -3,7 +3,8 @@ extends Control
 
 
 
-		
+func _ready() -> void:
+	weapon_select.play("sword")
 		
 	
 func get_weapon(current_equipped, previous_equipped, swap_dir):
